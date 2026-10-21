@@ -27,6 +27,9 @@ task. A01 can refine the foundation UI alongside evidence work. Follow
 
 ## Evidence rules
 
+The completed scaffold checks and their limits are recorded in
+[foundation verification](evidence/FOUNDATION.md).
+
 CI validates builds, types and deterministic tests. It cannot establish
 collector accuracy, battery impact, background survival, OS permission UX,
 installer reliability, or ISP accounting parity. Record these separately.

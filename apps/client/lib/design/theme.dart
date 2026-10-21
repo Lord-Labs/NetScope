@@ -38,34 +38,36 @@ ThemeData buildNetScopeTheme(Brightness brightness) {
       elevation: 0,
       scrolledUnderElevation: 0,
     ),
-    textTheme: base.textTheme.copyWith(
-      headlineMedium: TextStyle(
-        fontSize: NetScopeTokens.typeTitle,
-        fontWeight: FontWeight.w500,
-        height: 1.4,
-        color: foreground,
-      ),
-      titleLarge: TextStyle(
-        fontSize: NetScopeTokens.typeSection,
-        fontWeight: FontWeight.w500,
-        height: 1.4,
-        color: foreground,
-      ),
-      bodyLarge: TextStyle(
-        fontSize: NetScopeTokens.typeBody,
-        fontWeight: FontWeight.w400,
-        height: 1.6,
-        color: foreground,
-      ),
-      bodyMedium: TextStyle(
-        fontSize: NetScopeTokens.typeLabel,
-        fontWeight: FontWeight.w400,
-        height: 1.6,
-        color: dark
-            ? NetScopeTokens.darkTextSecondary
-            : NetScopeTokens.lightTextSecondary,
-      ),
-    ),
+    textTheme: base.textTheme
+        .copyWith(
+          headlineMedium: TextStyle(
+            fontSize: NetScopeTokens.typeTitle,
+            fontWeight: FontWeight.w500,
+            height: 1.4,
+            color: foreground,
+          ),
+          titleLarge: TextStyle(
+            fontSize: NetScopeTokens.typeSection,
+            fontWeight: FontWeight.w500,
+            height: 1.4,
+            color: foreground,
+          ),
+          bodyLarge: TextStyle(
+            fontSize: NetScopeTokens.typeBody,
+            fontWeight: FontWeight.w400,
+            height: 1.6,
+            color: foreground,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: NetScopeTokens.typeLabel,
+            fontWeight: FontWeight.w400,
+            height: 1.6,
+            color: dark
+                ? NetScopeTokens.darkTextSecondary
+                : NetScopeTokens.lightTextSecondary,
+          ),
+        )
+        .apply(fontFamily: base.textTheme.bodyMedium?.fontFamily),
     filledButtonTheme: FilledButtonThemeData(
       style: FilledButton.styleFrom(
         minimumSize: const Size(48, 48),

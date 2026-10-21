@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Lord-Labs/NetScope/blob/main/packages/contracts/measurement.schema.json",
+  "title": "NetScope measurement report v1 (planned ingestion contract)",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "device_id", "network_id", "counter_epoch", "sequence", "start", "end", "kind", "scope", "confidence", "coverage", "rx_bytes", "tx_bytes", "gap_reason"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "device_id": { "type": "string", "format": "uuid" },
+    "network_id": { "type": "string", "format": "uuid" },
+    "counter_epoch": { "type": "string", "format": "uuid" },
+    "sequence": { "type": "integer", "minimum": 0, "maximum": 9007199254740991 },
+    "start": { "type": "string", "format": "date-time", "pattern": "Z$" },
+    "end": { "type": "string", "format": "date-time", "pattern": "Z$" },
+    "kind": { "enum": ["reading", "gap"] },
+    "scope": { "enum": ["interface_all_traffic", "internet_verified"] },
+    "confidence": { "enum": ["estimated", "validated"] },
+    "coverage": { "enum": ["complete", "partial", "unknown"] },
+    "rx_bytes": { "oneOf": [{ "type": "string", "pattern": "^(0|[1-9][0-9]{0,19})$" }, { "type": "null" }] },
+    "tx_bytes": { "oneOf": [{ "type": "string", "pattern": "^(0|[1-9][0-9]{0,19})$" }, { "type": "null" }] },
+    "gap_reason": { "enum": [null, "unknown", "permission", "collector_stopped", "network_transition", "counter_reset", "unsupported"] }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "kind": { "const": "gap" } } },
+      "then": { "properties": { "rx_bytes": { "type": "null" }, "tx_bytes": { "type": "null" }, "gap_reason": { "type": "string" }, "coverage": { "enum": ["partial", "unknown"] } } },
+      "else": { "properties": { "rx_bytes": { "type": "string" }, "tx_bytes": { "type": "string" }, "gap_reason": { "type": "null" } } }
+    }
+  ]
+}

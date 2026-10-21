@@ -1,0 +1,25 @@
+name: Scoped task
+description: Propose a concrete task aligned with the roadmap.
+body:
+  - type: textarea
+    id: goal
+    attributes:
+      label: Problem and milestone
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and relevant files
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria and validation evidence
+    validations:
+      required: true
+  - type: textarea
+    id: limits
+    attributes:
+      label: Non-goals and remaining limits

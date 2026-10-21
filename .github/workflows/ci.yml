@@ -1,0 +1,50 @@
+name: Foundation checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foundation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repository-api:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run tokens:check
+      - run: npm run check:repo
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build --workspace @netscope/api
+
+  flutter:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.47.7'
+          channel: stable
+          cache: true
+      - run: flutter pub get
+        working-directory: apps/client
+      - run: dart format --output=none --set-exit-if-changed lib test
+        working-directory: apps/client
+      - run: flutter analyze
+        working-directory: apps/client
+      - run: flutter test
+        working-directory: apps/client

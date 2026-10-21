@@ -1,0 +1,24 @@
+{
+  "name": "netscope",
+  "private": true,
+  "version": "0.0.0",
+  "description": "NetScope monorepo tooling; Flutter/native tools remain independent.",
+  "workspaces": [
+    "apps/api"
+  ],
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "check:repo": "node scripts/check-repo.mjs",
+    "tokens:generate": "node scripts/generate-tokens.mjs",
+    "tokens:check": "node scripts/generate-tokens.mjs --check",
+    "typecheck": "npm run typecheck --workspaces",
+    "test": "node --test scripts/tests/*.test.mjs && npm run test --workspaces",
+    "dev:api": "npm run dev --workspace @netscope/api"
+  },
+  "devDependencies": {
+    "ajv": "^8.20.0",
+    "ajv-formats": "^3.0.1"
+  }
+}

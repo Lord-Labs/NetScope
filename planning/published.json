@@ -1,0 +1,181 @@
+{
+  "repository": "Lord-Labs/NetScope",
+  "milestones": {
+    "foundation": {
+      "number": 1,
+      "url": "https://github.com/Lord-Labs/NetScope/milestone/1"
+    },
+    "local": {
+      "number": 2,
+      "url": "https://github.com/Lord-Labs/NetScope/milestone/2"
+    },
+    "shared": {
+      "number": 3,
+      "url": "https://github.com/Lord-Labs/NetScope/milestone/3"
+    },
+    "billing": {
+      "number": 4,
+      "url": "https://github.com/Lord-Labs/NetScope/milestone/4"
+    },
+    "android": {
+      "number": 5,
+      "url": "https://github.com/Lord-Labs/NetScope/milestone/5"
+    },
+    "public": {
+      "number": 6,
+      "url": "https://github.com/Lord-Labs/NetScope/milestone/6"
+    }
+  },
+  "issues": {
+    "F01": {
+      "number": 1,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/1",
+      "node_id": "I_kwDOVS0-_s8AAAABY9u9jw"
+    },
+    "G01": {
+      "number": 2,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/2",
+      "node_id": "I_kwDOVS0-_s8AAAABY9u-VQ"
+    },
+    "G02": {
+      "number": 3,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/3",
+      "node_id": "I_kwDOVS0-_s8AAAABY9u-sw"
+    },
+    "A01": {
+      "number": 4,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/4",
+      "node_id": "I_kwDOVS0-_s8AAAABY9u_JQ"
+    },
+    "A02": {
+      "number": 5,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/5",
+      "node_id": "I_kwDOVS0-_s8AAAABY9u_jg"
+    },
+    "A03": {
+      "number": 6,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/6",
+      "node_id": "I_kwDOVS0-_s8AAAABY9u_6A"
+    },
+    "A04": {
+      "number": 7,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/7",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vAQw"
+    },
+    "A05": {
+      "number": 8,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/8",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vAkQ"
+    },
+    "A06": {
+      "number": 9,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/9",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vDEQ"
+    },
+    "A07": {
+      "number": 10,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/10",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vDYw"
+    },
+    "A08": {
+      "number": 11,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/11",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vDtQ"
+    },
+    "A09": {
+      "number": 12,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/12",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vD9w"
+    },
+    "S01": {
+      "number": 13,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/13",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vERQ"
+    },
+    "S02": {
+      "number": 14,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/14",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vEqw"
+    },
+    "S03": {
+      "number": 15,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/15",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vE9Q"
+    },
+    "S04": {
+      "number": 16,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/16",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vFQQ"
+    },
+    "S05": {
+      "number": 17,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/17",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vHag"
+    },
+    "S06": {
+      "number": 18,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/18",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vH1Q"
+    },
+    "S07": {
+      "number": 19,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/19",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vIKQ"
+    },
+    "S08": {
+      "number": 20,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/20",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vIeg"
+    },
+    "B01": {
+      "number": 21,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/21",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vIzg"
+    },
+    "B02": {
+      "number": 22,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/22",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vJDA"
+    },
+    "B03": {
+      "number": 23,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/23",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vJUw"
+    },
+    "B04": {
+      "number": 24,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/24",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vJoA"
+    },
+    "B05": {
+      "number": 25,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/25",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vLlA"
+    },
+    "D01": {
+      "number": 26,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/26",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vL-A"
+    },
+    "D02": {
+      "number": 27,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/27",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vMWA"
+    },
+    "D03": {
+      "number": 28,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/28",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vMug"
+    },
+    "D04": {
+      "number": 29,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/29",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vNCA"
+    },
+    "R01": {
+      "number": 30,
+      "url": "https://github.com/Lord-Labs/NetScope/issues/30",
+      "node_id": "I_kwDOVS0-_s8AAAABY9vNYA"
+    }
+  }
+}

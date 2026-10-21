@@ -1,0 +1,48 @@
+# Secrets and local tools
+.env
+.env.*
+!.env.example
+.dev.vars
+.dev.vars.*
+!.dev.vars.example
+.tools/
+.local/
+*.pem
+*.key
+*.jks
+*.keystore
+
+# JavaScript / Cloudflare
+node_modules/
+dist/
+coverage/
+.wrangler/
+
+# Flutter / native builds
+.dart_tool/
+.flutter-plugins-dependencies
+build/
+android/local.properties
+android/key.properties
+android/.gradle/
+android/app/debug/
+android/app/profile/
+android/app/release/
+windows/flutter/ephemeral/
+target/
+
+# Local usage data must never reach Git
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.csv
+*.log
+*.dmp
+
+# Editors / operating system
+.idea/
+.vscode/
+*.iml
+.DS_Store
+Thumbs.db

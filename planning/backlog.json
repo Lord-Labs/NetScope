@@ -1,0 +1,253 @@
+{
+  "repository": "Lord-Labs/NetScope",
+  "milestones": [
+    { "key": "foundation", "title": "Repository foundation", "description": "Reproducible scaffold, decision record, design tokens, contributor rules and dependency-linked backlog. Not a monitoring release." },
+    { "key": "local", "title": "v0.1.0-alpha.1: local Windows core", "description": "First useful release: real selected-network readings, explicit scope/gaps, durable local history, export and tested Windows installation. No accounts or cloud dependency." },
+    { "key": "shared", "title": "v0.2.0-alpha.1: shared household", "description": "Authenticated groups/devices, durable idempotent sync, owner-only device details and visible member aggregates within a measured free-tier budget." },
+    { "key": "billing", "title": "v0.3.0-beta.1: reviewed settlements", "description": "Custom periods, base/top-up costs, exact proportional shares, explicit missing-data review and immutable approved snapshots." },
+    { "key": "android", "title": "Android evidence and beta", "description": "Independent non-VPN measurement gate followed by Kotlin collection, durable storage and Flutter integration on documented supported devices." },
+    { "key": "public", "title": "v1.0.0: validated public release", "description": "Evidence-backed platform matrix, privacy/security/restore audit and release artifacts matching documented claims." }
+  ],
+  "issues": [
+    {
+      "key": "F01", "title": "Establish the monorepo, truthful scaffold and contributor handoff", "milestone": "foundation", "priority": "p0", "type": "foundation", "area": "docs", "depends_on": [],
+      "goal": "Let a contributor or model start an unblocked task without reconstructing the chat or mistaking a demo for live measurement.",
+      "paths": ["AGENTS.md", "README.md", "README.ar.md", "docs/", "planning/", ".github/", "apps/client/", "apps/api/"],
+      "acceptance": ["Locked Flutter/free-tier/no-VPN/no-router/no-Student-Pack decisions and superseded alternatives are explicit.", "Current capabilities distinguish shell/health/contracts from unimplemented collectors, auth and billing.", "Runnable Flutter shell shows unknown values and no live collection claims; health exposes disabled capabilities.", "Shared semantic tokens generate Dart/CSS and contrast/drift tests pass.", "Published issues have milestones, dependencies, acceptance, validation and non-goals; an index links real issue numbers.", "CI validates repo/contracts/API/Flutter without cloud credentials; README commands match the checkout."],
+      "validation": ["Run repository, token, contract, API type/test/build checks.", "Run Flutter format/analyze/widget tests; record any missing local toolchain and CI results separately.", "Inspect published milestones/issues and clone/start instructions."],
+      "non_goals": ["Do not claim a released collector or completed measurement gate.", "Do not provision production cloud resources or publish a monitoring binary."]
+    },
+    {
+      "key": "G01", "title": "Prove Windows network attribution and measurement scope", "milestone": "local", "priority": "p0", "type": "research", "area": "windows", "depends_on": ["F01"],
+      "goal": "Choose a public Windows measurement method from real observations before implementing a permanent collector.",
+      "paths": ["native/windows/", "docs/MEASUREMENT.md", "docs/evidence/TEMPLATE.md", "docs/STATE.md"],
+      "acceptance": ["Record exact OS/API versions, topology and independent reference layer using a redacted evidence file.", "Compare connection-profile and interface counters for upload/download, household/other Wi-Fi, LAN-only traffic, IPv4/IPv6 and simultaneous interfaces.", "Observe sleep/reboot/reset/network switch and UI/process closure; document recoverable history versus unknown intervals.", "Quantify repeated-transfer error and decide internet_verified, estimated interface_all_traffic, or unsupported with supported conditions.", "Specify collection API, permissions, sampling/checkpoint approach and truthful alpha wording; update STATE."],
+      "validation": ["Run the required measurement matrix on a controlled network; >=3 repetitions for comparable >=100 MB transfers.", "Compare to an independent router/harness rather than file size alone; record worst-case error and LAN contamination.", "Review the go/no-go before starting A02."],
+      "non_goals": ["No packet driver, WFP implementation or packet capture product before evidence justifies it.", "No financial accuracy claim from a successful build or interface counter alone."]
+    },
+    {
+      "key": "G02", "title": "Prove Android household measurement without VPN or root", "milestone": "android", "priority": "p0", "type": "research", "area": "android", "depends_on": ["F01"],
+      "goal": "Establish whether public Android APIs can meet attribution/scope requirements under real background restrictions.",
+      "paths": ["apps/client/android/", "docs/MEASUREMENT.md", "docs/evidence/", "docs/STATE.md"],
+      "acceptance": ["Start an Android 12+ experiment with per-interface TrafficStats and NetworkStatsManager reconciliation where appropriate.", "Test household/other Wi-Fi/cellular with simultaneous connectivity, LAN transfers, AP roaming, IPv6 and an existing third-party VPN.", "Record permissions, SSID/BSSID availability, counter resets, coarse history and unsupported combinations.", "Observe screen-off, battery saver, reboot, force-stop and permission revocation on at least two OS/device combinations before broad support claims.", "Document valid foreground-service/lifecycle options and a go/no-go for scope; preserve no-VPN/no-root requirements.", "Keep a blocked Android result independent from Windows alpha delivery."],
+      "validation": ["Use the evidence template and independent reference with repeated transfers.", "Record background/battery observations and any gaps rather than backfilling invented use.", "A reviewer confirms the compatibility matrix and the release wording permitted by evidence."],
+      "non_goals": ["No VPN, hidden API, root, accessibility-service abuse or MDM workaround.", "No Android-support claim based on Flutter compiling an APK."]
+    },
+    {
+      "key": "A01", "title": "Complete the Arc-inspired Flutter design primitives and state gallery", "milestone": "local", "priority": "p1", "type": "feature", "area": "design", "depends_on": ["F01"],
+      "goal": "Produce a calm, modern and reusable UI foundation without delaying measurement or importing React/Arc Pro code.",
+      "paths": ["design/tokens.json", "apps/client/lib/design/", "apps/client/lib/", "apps/client/test/", "docs/DESIGN_SYSTEM.md"],
+      "acceptance": ["Use original semantic tokens, neutral surfaces, restrained accent, 400/500 type and one primary action per surface.", "Create the minimal usage/status/history/setup primitives with loading, empty, error, unknown, permission and in-place success states.", "Support Arabic RTL/English LTR, light/dark, keyboard focus and reduced motion.", "Review a licensed bundled Arabic/Latin font choice and avoid runtime font downloads or ornamental assets.", "Screens at 320/390/768/1024/1440 and 200% text do not overflow; Android touch targets are >=48 logical pixels.", "Changing values reserve space and distinguish measured zero, unknown and estimated scope."],
+      "validation": ["Run token drift/contrast tests and Flutter format/analyze/widget tests.", "Attach renders of affected states in both themes/languages and compact/desktop sizes.", "Perform a keyboard/screen-reader pass and state which devices were checked."],
+      "non_goals": ["No React dependency, copied paid Arc source, design-system framework or marketing site.", "No fake usage or financial cards in the local alpha."]
+    },
+    {
+      "key": "A02", "title": "Implement the evidence-selected Rust Windows collector", "milestone": "local", "priority": "p0", "type": "feature", "area": "windows", "depends_on": ["G01"],
+      "goal": "Turn the approved measurement method into a small collector with truthful scope and reset handling.",
+      "paths": ["native/windows/", "packages/contracts/", "docs/evidence/", "docs/STATE.md"],
+      "acceptance": ["Introduce a focused Cargo crate using the G01-selected public OS APIs and justified least privileges.", "Emit typed readings and coverage events with explicit network context, counter epoch, time bounds and scope/confidence.", "Use monotonic elapsed time for deltas and UTC for persisted intervals; handle counter wrap/reset without huge or negative use.", "Network transitions close the previous context; other-network intervals are not attributed to the household.", "Expose unsupported/error states rather than returning synthetic successful readings.", "Add Cargo format/check/test to CI when the actual crate exists."],
+      "validation": ["Unit-test reset, decreasing/wrapped counter, time correction and network-switch sequences.", "Replay redacted deterministic fixtures and re-run representative G01 hardware transfers.", "Measure baseline sampling CPU and record collector limitations."],
+      "non_goals": ["No UI, hosted account, generic plugin architecture or financial logic.", "Do not upgrade interface scope to internet_verified without evidence."]
+    },
+    {
+      "key": "A03", "title": "Run collection as a Windows service with restricted local IPC", "milestone": "local", "priority": "p0", "type": "feature", "area": "windows", "depends_on": ["A02"],
+      "goal": "Decouple collection from Flutter lifetime and provide a narrow, authorized control/status interface.",
+      "paths": ["native/windows/", "apps/client/windows/", "SECURITY.md", "docs/DEVELOPMENT.md"],
+      "acceptance": ["Service start/stop/recovery behavior is explicit and stopping collection records an explainable boundary when possible.", "Use restricted named-pipe/local IPC with OS ACLs and a small typed command set; document shared-PC ownership.", "Only the authorized local owner can configure the collector or read device details.", "Closing/crashing the Flutter UI does not terminate the service; service errors are visible to the UI on reconnect.", "Graceful service shutdown preserves checkpoints; no arbitrary command execution or unauthenticated localhost HTTP control."],
+      "validation": ["Test UI closure, service restart, unauthorized IPC access and malformed/oversized messages.", "Manually check service recovery on supported Windows and record privileges required.", "Add integration tests for reconnect and error propagation."],
+      "non_goals": ["No anti-uninstall or administrator-proof enforcement.", "No installer auto-start rollout before A08 tests it."]
+    },
+    {
+      "key": "A04", "title": "Persist a crash-safe local SQLite usage ledger and checkpoints", "milestone": "local", "priority": "p0", "type": "feature", "area": "data", "depends_on": ["A03"],
+      "goal": "Preserve real measurements and coverage through interruption without double counting.",
+      "paths": ["native/windows/", "packages/contracts/", "docs/DATA_MODEL.md", "docs/DEVELOPMENT.md"],
+      "acceptance": ["Add versioned SQLite migrations for sessions, readings, gaps and collection checkpoints only.", "Persist each reading and checkpoint atomically before acknowledging progress.", "Replay/re-query revises the same measurement instead of adding duplicate consumption.", "Interrupted writes, database errors and disk-full conditions leave an explicit error/gap and a recoverable cursor.", "Unknown intervals remain distinct from measured zero; preserve unacknowledged data and migration rollback/export guidance."],
+      "validation": ["Fault-inject interrupted transactions, reopen the ledger and compare exact totals/checkpoints.", "Test duplicate/reordered readings, reset epochs, migration upgrade and disk-error behavior.", "Benchmark write frequency and local database growth at the selected sampling cadence."],
+      "non_goals": ["No cloud outbox upload, auth tables or future billing schema.", "No destructive automatic retention of unsynced readings."]
+    },
+    {
+      "key": "A05", "title": "Implement one-network setup, scope labels and coverage state transitions", "milestone": "local", "priority": "p0", "type": "feature", "area": "windows", "depends_on": ["A04"],
+      "goal": "Let a resident select the current household network without understanding interface identifiers.",
+      "paths": ["native/windows/", "apps/client/lib/", "packages/contracts/", "docs/MEASUREMENT.md"],
+      "acceptance": ["Setup proposes the current supported connection and asks for a clear confirmation/nickname, never the Wi-Fi password.", "Store only necessary network matching information; ambiguous/unavailable identity becomes unknown/unsupported.", "Switching away pauses household attribution and switching back starts a correct context; no cross-network delta leaks.", "Expose collector state, measurement scope, coverage and freshness separately through IPC.", "Denied permissions, sleep/reboot and stop/resume paths have clear remediation and gaps where evidence is absent."],
+      "validation": ["Test same SSID on a different network, AP roam, interface replacement and simultaneous connections.", "Check no mobile/other-network bytes enter the configured household totals under supported conditions.", "Manually verify the setup path and reset/recovery wording in both languages."],
+      "non_goals": ["No router configuration, scanning residents, password capture or automatic fraud detection.", "No multi-household network switching UI in the first local alpha."]
+    },
+    {
+      "key": "A06", "title": "Wire Flutter overview and local history to real collector data", "milestone": "local", "priority": "p0", "type": "feature", "area": "client", "depends_on": ["A01", "A05"],
+      "goal": "Make the app useful: real recorded usage and explainable coverage on a small, modern interface.",
+      "paths": ["apps/client/lib/", "apps/client/test/", "apps/client/windows/", "docs/STATE.md"],
+      "acceptance": ["Replace foundation-only content with real IPC status and durable history for a selected range.", "Show upload/download, total, units, scope and coverage; unknown stays a dash and a measured zero remains zero.", "Show last observation separately from sync; local mode requires no sign-in or cloud service.", "At most overview/devices primary destinations; advanced technical diagnostics stay secondary.", "Loading/error/reconnect/permission/unsupported states preserve the user's context and offer an actionable next step."],
+      "validation": ["Widget/integration tests use explicit fake adapters only in tests, never production fallback data.", "Check light/dark, RTL/LTR, keyboard, reduced motion and text scaling with actual status transitions.", "Close/reopen the UI and verify the same ledger totals and ongoing service collection."],
+      "non_goals": ["No financial charges, members leaderboard, chart-heavy analytics or live cloud dashboard.", "No local Dart timer as the durable collector."]
+    },
+    {
+      "key": "A07", "title": "Export local usage and coverage with truthful precision and units", "milestone": "local", "priority": "p1", "type": "feature", "area": "data", "depends_on": ["A06"],
+      "goal": "Let a resident inspect/share an explicit report without requiring the cloud or financial claims.",
+      "paths": ["apps/client/lib/", "native/windows/", "packages/contracts/", "docs/RELEASES.md"],
+      "acceptance": ["Export selected-range CSV/JSON with UTC bounds, display time zone, byte units, scope, confidence and coverage gaps.", "Exclude credentials, Wi-Fi secrets, private diagnostics and data outside the selection.", "Partial boundaries expose supported precision rather than silently prorating coarse buckets.", "File save cancellation/errors retain data and provide in-place feedback; exported values agree with the ledger."],
+      "validation": ["Round-trip JSON and validate schema/units; test CSV escaping and long/localized labels.", "Test empty/zero/unknown/partial ranges and save errors.", "Review a redacted export against visible totals and gaps."],
+      "non_goals": ["No final bill, automatic cost estimate or cloud upload.", "Do not commit real exported household data as fixtures."]
+    },
+    {
+      "key": "A08", "title": "Package the Windows app/service with guided install and safe uninstall", "milestone": "local", "priority": "p0", "type": "feature", "area": "ops", "depends_on": ["A07"],
+      "goal": "Make the first useful app installable by a nontechnical resident through one guided entry point.",
+      "paths": ["apps/client/windows/", "native/windows/", ".github/workflows/", "docs/DEVELOPMENT.md", "docs/RELEASES.md"],
+      "acceptance": ["Build Flutter release and the matching Rust service into a reproducible Windows artifact.", "Installer handles service registration/required permissions and clearly explains collection/startup behavior.", "Upgrade preserves the database, ownership and checkpoints and checks schema compatibility.", "Uninstall stops/removes the service and offers a clear export/preserve/delete choice for local data.", "Document signing/SmartScreen limits and total download/runtime requirements; never ask users to disable security software.", "Release workflow has minimal permissions and produces checksums without exposing signing secrets."],
+      "validation": ["Install/update/uninstall on a clean supported Windows environment.", "Test interrupted install, denied elevation, locked files and retained user data.", "Verify artifacts come from the tagged source and measure installed/download sizes."],
+      "non_goals": ["No unsigned auto-update execution, paid signing dependency or cloud deployment.", "A source ZIP alone is not an installer acceptance result."]
+    },
+    {
+      "key": "A09", "title": "Validate and publish the first useful local Windows alpha", "milestone": "local", "priority": "p0", "type": "release", "area": "ops", "depends_on": ["A08"],
+      "goal": "Ship v0.1.0-alpha.1 with the actual local core, honest scope and reproducible release evidence.",
+      "paths": ["docs/RELEASES.md", "docs/STATE.md", "README.md", "README.ar.md", "docs/evidence/", ".github/workflows/"],
+      "acceptance": ["Every Windows alpha gate passes with linked evidence; no fake consumption or unverified internet-billing claim remains.", "Pilot at least one clean installation and a normal usage session including UI closure/network switch/restart.", "Publish measured idle/active CPU, memory, disk/write rate, artifact size and limitations with exact test environment.", "Set explicit performance budgets from the measured baseline and resolve unacceptable regressions before tagging.", "Release notes document supported Windows scope, coverage limits, privacy, install/update/uninstall and how to report defects.", "Publish tagged binaries/checksums only after checks; update STATE and compatibility information."],
+      "validation": ["Run the release checklist, full relevant CI and manual installer/measurement regression matrix.", "Verify a downloaded release against its checksum and source tag.", "Confirm Android is not advertised as supported unless its independent gates also passed."],
+      "non_goals": ["Do not wait for cloud accounts, a website or billing to ship the local alpha.", "Do not label interface-only estimates as verified internet bills."]
+    },
+    {
+      "key": "S01", "title": "Provision and verify the free Worker/D1 shared-service foundation", "milestone": "shared", "priority": "p1", "type": "feature", "area": "ops", "depends_on": ["A09"],
+      "goal": "Add a real free-tier deployment only when a useful local app exists.",
+      "paths": ["apps/api/", "docs/OPERATIONS.md", ".github/workflows/", "docs/STATE.md"],
+      "acceptance": ["Verify current Workers/D1 allowances and define separate test/production resources using a workers.dev address.", "Create reviewed D1 bindings/migration process without committing account secrets or private data.", "Health/readiness behavior is explicit and does not claim collection or database health without checking it.", "Use bounded request processing, scrubbed operational logging and a migration/export/rollback procedure.", "No paid plan, Student Pack, Redis, queue or separate always-on server is required."],
+      "validation": ["Build locally and test deploy/readiness/rollback on the intended free resources.", "Inspect deployed configuration for exposed credentials and unexpected billable resources.", "Record current limits and update STATE with the actual public deployment only when deployed."],
+      "non_goals": ["No production deployment during repository foundation.", "No unlimited-user or guaranteed-uptime claim from free-tier availability."]
+    },
+    {
+      "key": "S02", "title": "Implement reviewed human sign-in and revocable device pairing", "milestone": "shared", "priority": "p0", "type": "security", "area": "api", "depends_on": ["S01"],
+      "goal": "Keep account setup simple while separating human sessions from narrow device upload authority.",
+      "paths": ["apps/api/", "apps/client/lib/", "packages/contracts/", "docs/API.md", "SECURITY.md"],
+      "acceptance": ["Prove Better Auth + D1/Drizzle + Google sign-in compatibility and CPU/query budget before adopting the integration.", "Use safe browser sessions and a reviewed short-lived, one-time device pairing flow; never implement custom cryptography.", "Issue a revocable device credential scoped to that installation; protect it with the OS and store server-side secrets safely.", "Prevent pairing replay/expiry abuse, CSRF/open redirects and accidental identity merging.", "Native background collection remains useful when auth/cloud is unavailable; private account actions do not accept upload-only credentials.", "Document OAuth setup for self-hosting without making residents configure developer credentials."],
+      "validation": ["Test login/logout, expired/reused pairing codes, wrong device, revoked credentials and blocked redirects.", "Measure Worker CPU/D1 operations for realistic auth flows.", "Verify no secrets appear in built app assets, logs, URLs or repository history."],
+      "non_goals": ["No paid auth provider, email/SMS requirement or password implementation from scratch.", "No UI-only authorization or claim that a signed device report proves truthful metering."]
+    },
+    {
+      "key": "S03", "title": "Add households, invitations, membership and owner-only device access", "milestone": "shared", "priority": "p0", "type": "feature", "area": "api", "depends_on": ["S02"],
+      "goal": "Support independent small groups with explicit, enforced privacy boundaries.",
+      "paths": ["apps/api/", "apps/client/lib/", "packages/contracts/", "docs/DATA_MODEL.md"],
+      "acceptance": ["Create/join a household through revocable/expiring invitations and register several devices per person.", "Keep historical membership/device ownership and explicit household IANA time zone.", "Members can read member aggregates/coverage; only a device owner can read device-level details.", "Server-side authorization covers every operation, including administrators, invitations and device revocation.", "No router credentials or unnecessary neighboring-network metadata are collected."],
+      "validation": ["Test two households with crafted IDs, nonmembers, removed members and administrator attempts to access another member's device.", "Test invite expiry/revocation/reuse and historical membership changes.", "Verify one user's two devices aggregate under the intended historical owner."],
+      "non_goals": ["No organizational hierarchy, arbitrary role builder or social features.", "Do not rely on hidden UI controls as an access boundary."]
+    },
+    {
+      "key": "S04", "title": "Accept bounded measurement batches with idempotent D1 transactions", "milestone": "shared", "priority": "p0", "type": "feature", "area": "data", "depends_on": ["S03"],
+      "goal": "Make repeated/offline uploads durable, authorized and mathematically nonduplicating.",
+      "paths": ["apps/api/", "packages/contracts/", "docs/API.md", "docs/DATA_MODEL.md"],
+      "acceptance": ["Implement the versioned ingestion OpenAPI/schema and matching D1 migrations in one reviewed change.", "Validate ownership/membership, schema, byte bounds, time ordering, epochs/revisions, overlap, payload and batch limits.", "Replayed/reordered reports cannot add usage twice; late OS history revisions replace the intended bucket.", "Acknowledge only committed work; database failure cannot leave the client falsely advanced.", "Preserve scope/confidence/coverage and explicit null-valued gaps; no auto-upgrade to verified internet usage.", "Measure real D1 scan/write/index counts per batch and stay within the chosen invocation/query budget."],
+      "validation": ["Integration-test duplicate batches, reordered revisions, resets, partial failure/rollback and delayed ACK.", "Reject wrong household/device, revoked credentials, oversized/malformed data and impossible times.", "Load-test bounded normal and recovery batches and record actual Worker CPU/D1 counts."],
+      "non_goals": ["No ingestion success stub, hidden lossy queue or per-sample redundant rollups.", "No financial settlement from raw uploaded sums alone."]
+    },
+    {
+      "key": "S05", "title": "Sync the durable device outbox with retry, ACK and revocation handling", "milestone": "shared", "priority": "p0", "type": "feature", "area": "client", "depends_on": ["S04"],
+      "goal": "Keep local measurement reliable while cloud availability and credentials change.",
+      "paths": ["native/windows/", "apps/client/lib/", "apps/client/android/", "packages/contracts/"],
+      "acceptance": ["Persist upload candidates and committed cursors atomically; delete/compact only after a valid ACK and retention policy.", "Start with about 15-minute batched upload plus bounded backoff/jitter; sampling precision is independent.", "Network failure, quota exhaustion and revoked credentials preserve local readings and produce distinct sync states.", "Chunk backlog recovery to endpoint limits; avoid a reconnect storm or a batch that exceeds Worker limits.", "Expose last observation, last successful upload and pending/error status without claiming real-time presence."],
+      "validation": ["Fault-inject timeout, server commit with lost ACK, replay, reordering, revocation and prolonged offline periods.", "Compare local/server totals after recovery and verify no unacknowledged data loss.", "Test UI wording for fresh local data with stale cloud sync."],
+      "non_goals": ["No WebSocket, push infrastructure or automatic background use of personal cellular data without an explicit policy.", "Do not classify an absent heartbeat as cheating."]
+    },
+    {
+      "key": "S06", "title": "Build the compact Svelte household website with Arc-inspired states", "milestone": "shared", "priority": "p1", "type": "feature", "area": "web", "depends_on": ["S03", "A01"],
+      "goal": "Give residents a simple shared view and invitations without duplicating an entire app or changing the stack.",
+      "paths": ["apps/web/", "design/tokens.css", "packages/contracts/", "docs/DESIGN_SYSTEM.md"],
+      "acceptance": ["Introduce Svelte/TypeScript/Tailwind only now and consume the shared semantic token CSS.", "Implement sign-in, group create/join/invite and member aggregate/coverage views against real authenticated APIs.", "Preserve owner-only device details and expose no private data through HTML, responses or caches.", "Use a small navigation hierarchy, Arabic/English, RTL/LTR, light/dark and complete loading/empty/error/unknown states.", "Do not fabricate member usage before S07 is available; show an explicit not-yet-available state.", "Build static assets with reviewed same-origin/session behavior and appropriate caching."],
+      "validation": ["Browser-test invite/join/logout, group switching, ownership denial and unavailable reports.", "Check keyboard, reduced motion, 320-1440 widths, 200% text and both themes/languages.", "Run typecheck/build and inspect network responses for cross-household/private leakage."],
+      "non_goals": ["No React/Arc source installation, paid components, newsletter or marketing-site launch blocker.", "No charts implying precise or complete usage without evidence."]
+    },
+    {
+      "key": "S07", "title": "Aggregate member usage with coverage, source precedence and honest totals", "milestone": "shared", "priority": "p0", "type": "feature", "area": "data", "depends_on": ["S05", "S06"],
+      "goal": "Combine each person's devices without upgrading missing/estimated data into a verified household total.",
+      "paths": ["apps/api/", "apps/web/", "apps/client/lib/", "docs/MEASUREMENT.md", "docs/DATA_MODEL.md"],
+      "acceptance": ["Aggregate historical-owner device readings within explicit intervals and consistent byte units.", "Handle source precedence/OS revisions and exclude duplicate overlapping observations of the same use.", "Expose missing devices, unknown intervals, scope/confidence and freshness alongside totals.", "Detect/flag known tether/shared-device double-count uncertainty rather than assuming unique traffic.", "Label the result recorded participating-device total, not verified whole-household WAN use.", "Indexed queries and any rollups preserve documented period resolution and D1 budget."],
+      "validation": ["Test multiple devices/owners, ownership changes, missing members, revisions, overlaps and DST boundaries.", "Compare aggregation against deterministic fixtures and redacted pilot records.", "Measure read/scan/write growth at the intended pilot load."],
+      "non_goals": ["No estimates of hidden/unregistered devices or inferred culprit for missing bytes.", "No automatic apportionment across unobservable gaps."]
+    },
+    {
+      "key": "S08", "title": "Validate free-tier capacity, retention, recovery and shared-alpha privacy", "milestone": "shared", "priority": "p0", "type": "release", "area": "ops", "depends_on": ["S07"],
+      "goal": "Launch the shared alpha within an observed zero-cost operating envelope and explicit data safeguards.",
+      "paths": ["docs/OPERATIONS.md", "docs/RELEASES.md", "docs/STATE.md", "apps/api/", "apps/web/"],
+      "acceptance": ["Publish a measured pilot envelope for requests, CPU, D1 reads/writes/indexes/storage including retries/UI/auth.", "Implement bounded registration/admission and backoff behavior before quotas exhaust; no automatic paid upgrades.", "Define and test fine-grained retention/rollup precision, immutable settlement needs and unsynced local-data protection.", "Test redacted export/restore, short-window provider recovery and an encrypted off-platform operator backup.", "Review tenant/device privacy, logs, secrets, auth/revocation and outage UI; update supported capabilities and shared-alpha notes."],
+      "validation": ["Run load/recovery/retention jobs against nonproduction resources and record actual provider metrics.", "Exercise capacity and cloud outage with devices retaining readings.", "Audit exported/logged data for identifiers/tokens and verify cross-tenant test coverage."],
+      "non_goals": ["No promise of unlimited free hosting or financial correctness from shared-alpha availability.", "Do not turn on session replay of resident data by default."]
+    },
+    {
+      "key": "B01", "title": "Add expenses and explicit household-local accounting periods", "milestone": "billing", "priority": "p1", "type": "feature", "area": "billing", "depends_on": ["S08"],
+      "goal": "Represent Egypt's variable-length capped plans and top-ups without assuming a monthly renewal.",
+      "paths": ["apps/api/", "apps/web/", "apps/client/lib/", "docs/BILLING.md", "packages/contracts/"],
+      "acceptance": ["Allow authorized administrators to select start/end in the household IANA time zone with end-exclusive UTC storage.", "Enter base/top-up costs as checked integer minor units and explicitly associate them with the intended period.", "Validate range/currency/cost and preserve drafts/errors without losing entered data.", "Do not detect ISP exhaustion/renewal automatically; display supported measurement precision at period boundaries.", "Record expense/period edits with an audit trail suitable for settlement review."],
+      "validation": ["Test one-week/two-week/custom periods, top-ups, invalid/negative costs and currency handling.", "Test Egypt DST ambiguous/nonexistent boundaries and UTC conversion.", "Verify non-admin and cross-household edits are denied."],
+      "non_goals": ["No payment gateway, bank details, subscriptions or fixed monthly cycle.", "No guessed package exhaustion or hidden cost allocation."]
+    },
+    {
+      "key": "B02", "title": "Compute exact proportional shares and deterministic minor-unit rounding", "milestone": "billing", "priority": "p0", "type": "feature", "area": "billing", "depends_on": ["B01"],
+      "goal": "Split all selected costs by accepted member usage with explainable, mathematically exact rounding.",
+      "paths": ["apps/api/", "packages/contracts/", "docs/BILLING.md"],
+      "acceptance": ["Use integer/BigInt arithmetic for cost-times-usage, no floating-point byte or money math.", "Apply largest remainders with a stable member-ID tie-breaker so shares sum exactly to total cost.", "A zero denominator, missing member, unverified scope or partial coverage yields an explicit review/provisional result.", "Aggregate multiple devices under the historical owner and retain the source data revision used.", "Return a small explainable calculation breakdown with quality flags, not a misleading final invoice."],
+      "validation": ["Test exact fractions, uneven ties, one-piastre costs, many members, large byte counts and zero denominators.", "Property-test sum preservation and deterministic results independent of input order.", "Test missing/partial/estimated cases cannot silently become finalized charges."],
+      "non_goals": ["No equal/base share, automatic penalties or invented missing consumption.", "No UI/client-side calculation as the source of truth."]
+    },
+    {
+      "key": "B03", "title": "Review and approve immutable settlements with versioned corrections", "milestone": "billing", "priority": "p0", "type": "feature", "area": "billing", "depends_on": ["B02"],
+      "goal": "Make incomplete evidence and later corrections explicit instead of mutating residents' approved bills.",
+      "paths": ["apps/api/", "apps/web/", "apps/client/lib/", "docs/BILLING.md", "docs/DATA_MODEL.md"],
+      "acceptance": ["Draft review shows costs, period, member totals, scope, coverage and boundary uncertainty before approval.", "Incomplete/estimated data requires a recorded cooperative review and keeps its labels; approval cannot create verified accuracy.", "Approval atomically freezes expenses, memberships, source revisions and shares with authorization/audit records.", "Late data prompts an explicit correction/version; it cannot silently change the approved snapshot.", "Prevent duplicate approval and overlapping approved use/cost, except through documented versioned correction."],
+      "validation": ["Test concurrent/repeated approval, late data, membership change, period overlap and correction history.", "Verify owner/admin/nonmember permissions and immutable export consistency.", "Review Arabic/English copy for provisional versus verified meaning."],
+      "non_goals": ["No fraud verdict, enforcement, money transfer or resident penalty.", "No finalization button that hides a scope/coverage limitation."]
+    },
+    {
+      "key": "B04", "title": "Export reviewed household settlements without private device leakage", "milestone": "billing", "priority": "p1", "type": "feature", "area": "billing", "depends_on": ["B03"],
+      "goal": "Give members a portable, inspectable record of agreed totals and calculation limits.",
+      "paths": ["apps/api/", "apps/web/", "apps/client/lib/", "packages/contracts/"],
+      "acceptance": ["Export immutable snapshot CSV/JSON with expense total, currency, bounds/time zone, member shares and review/quality status.", "Exports obey the same authorization as UI/API and omit other members' private device details.", "Include calculation version/correction linkage and preserve exact minor-unit/byte values.", "Download errors/cancellation preserve the snapshot and show actionable feedback."],
+      "validation": ["Compare exports to the approved stored snapshot after late measurements arrive.", "Test CSV escaping, Unicode names, authorization and correction versions.", "Ensure no credentials or raw network metadata are included."],
+      "non_goals": ["No tax invoice, payment receipt or legal debt-collection claim.", "No public share URL without a separate authorization/privacy design."]
+    },
+    {
+      "key": "B05", "title": "Run a small-household settlement pilot and release the reviewed beta", "milestone": "billing", "priority": "p0", "type": "release", "area": "billing", "depends_on": ["B04"],
+      "goal": "Validate the complete cooperative usage-to-cost story with residents before broader financial use.",
+      "paths": ["docs/evidence/", "docs/RELEASES.md", "docs/STATE.md", "README.md", "README.ar.md"],
+      "acceptance": ["Run a redacted pilot with several members and multiple devices, a top-up and a non-monthly period.", "Include a deliberate gap/offline recovery and a later correction; confirm members understand provisional results.", "Reconcile shares to the exact selected total and verify device-level privacy.", "Record measurement limitations, usability findings, free-budget metrics and defects; resolve blockers before tagging beta.", "Publish supported billing scope without claiming hidden-device detection or ISP-identical totals."],
+      "validation": ["Walk through invite -> collection -> offline sync -> selected expenses -> review -> approval -> export.", "Run full financial/security regression checks and manual language/accessibility review.", "Review releases against observed supported-platform evidence."],
+      "non_goals": ["No public financial correctness claim based only on synthetic fixtures.", "No expansion to payments or traffic enforcement during the pilot."]
+    },
+    {
+      "key": "D01", "title": "Implement the evidence-approved Kotlin Android collector lifecycle", "milestone": "android", "priority": "p0", "type": "feature", "area": "android", "depends_on": ["G02"],
+      "goal": "Collect only what Android evidence supports while exposing permissions and OS-imposed interruptions.",
+      "paths": ["apps/client/android/", "packages/contracts/", "docs/MEASUREMENT.md", "docs/STATE.md"],
+      "acceptance": ["Implement the G02-selected public APIs and declare justified permissions/service types.", "Collection and context handling are native and independent of the Flutter Activity/UI engine.", "Handle household transitions, permission loss, epoch resets and unsupported readings as explicit states/events.", "No cross-network/cellular bytes are attributed under documented supported conditions.", "Explain foreground notification/lifecycle restrictions; do not promise recovery after force-stop or OEM restrictions."],
+      "validation": ["Run native tests plus the G02 matrix on each advertised OS/device combination.", "Test screen-off, background limits, permission revocation and third-party VPN behavior.", "Record numerical scope and gap observations alongside implementation version."],
+      "non_goals": ["No VPN/root/hidden API fallback or always-on Dart isolate as the collector.", "Do not broaden compatibility beyond the measured matrix."]
+    },
+    {
+      "key": "D02", "title": "Persist Android readings and sync with durable native jobs", "milestone": "android", "priority": "p0", "type": "feature", "area": "android", "depends_on": ["D01"],
+      "goal": "Preserve Android measurements across interruption and support later cloud sync without keeping Flutter alive.",
+      "paths": ["apps/client/android/", "packages/contracts/", "docs/DATA_MODEL.md"],
+      "acceptance": ["Use SQLite/Room migrations and atomic reading/checkpoint writes with replay/reset semantics matching the contract.", "Recover from process death/reboot where OS evidence permits and record gaps where it does not.", "Use WorkManager for bounded deferrable sync jobs, not a continuous collector guarantee.", "Retain unacknowledged readings and distinguish local observation from cloud freshness.", "Keep local mode operational without an account; add shared-sync integration only against S04/S05 when available."],
+      "validation": ["Test interrupted writes, migration, counter resets, process recreation, denied permissions and disk failure.", "Run repeated/delayed ACK and offline recovery tests when the shared API is integrated.", "Measure native write/battery behavior during screen-off sessions."],
+      "non_goals": ["No background polling service mislabeled as unrestricted dataSync.", "No deletion of unsynced data to stay under a storage target."]
+    },
+    {
+      "key": "D03", "title": "Connect Android measurement to the shared Flutter UX and permission flow", "milestone": "android", "priority": "p1", "type": "feature", "area": "client", "depends_on": ["D02", "A01"],
+      "goal": "Provide the same simple NetScope experience on phones with platform-specific setup made explicit.",
+      "paths": ["apps/client/lib/", "apps/client/android/", "apps/client/test/", "docs/DESIGN_SYSTEM.md"],
+      "acceptance": ["Introduce a typed platform bridge for native status/history/setup commands without leaking unrestricted native authority.", "Request permissions only when needed with plain-language purpose and direct settings remediation.", "Show scope, unknown/gaps and last observation accurately after Activity recreation or returning from settings.", "Preserve Flutter theme/design/language behavior while adapting phone layout and >=48dp touch targets.", "Do not show unsupported device/API combinations as collecting or ready."],
+      "validation": ["Integration-test permission denial/recovery, process recreation, network switching and bridge error cases.", "Check TalkBack, RTL/LTR, dark/light, landscape, large text and reduced motion.", "Close/reopen the Activity and compare native ledger totals."],
+      "non_goals": ["No Compose rewrite of the UI, cloud dependency for local use or hidden setup steps.", "No fake completion of platform permissions when the OS denied them."]
+    },
+    {
+      "key": "D04", "title": "Validate Android beta artifacts, battery behavior and compatibility claims", "milestone": "android", "priority": "p0", "type": "release", "area": "android", "depends_on": ["D03"],
+      "goal": "Ship Android only on an evidence-backed support matrix with a usable and honest installation path.",
+      "paths": [".github/workflows/", "docs/evidence/", "docs/RELEASES.md", "docs/STATE.md", "README.md", "README.ar.md"],
+      "acceptance": ["Build release APKs reproducibly, protect signing keys and publish checksums/tag linkage.", "Validate install/update/uninstall/data preservation on supported devices and document direct-distribution steps.", "Publish real measurements for battery/idle CPU/memory/size and background survival, including unsupported cases.", "Re-run scope/coverage tests across advertised OS versions; no billing support is inferred from a successful APK build.", "Release notes distinguish local Android support from optional shared-account capability and store enrollment costs."],
+      "validation": ["Run Android native/Flutter CI plus controlled-device measurement/lifecycle tests.", "Test app upgrade, denied install/permissions, long screen-off use, reboot and force-stop.", "Verify the release notes and compatibility matrix against evidence, not generic framework support."],
+      "non_goals": ["No required paid Play Console enrollment, paid build service or Student Pack dependency.", "No claim of unrestricted background operation on all OEMs."]
+    },
+    {
+      "key": "R01", "title": "Audit the full product and publish a validated public v1 release", "milestone": "public", "priority": "p1", "type": "release", "area": "ops", "depends_on": ["A09", "S08", "B05", "D04"],
+      "goal": "Make source, binary behavior, privacy, measurement claims and operations agree before a public stable release.",
+      "paths": ["docs/", "README.md", "README.ar.md", "SECURITY.md", ".github/", "apps/", "native/"],
+      "acceptance": ["All advertised platform/accuracy combinations have reviewed evidence and no unresolved release-blocking defects.", "Complete tenant/device privacy, revocation, payload, native IPC, export/delete, backup/restore and migration/update audit.", "Validate zero-cost operating envelope/admission behavior and publish sustainable limits without promising unlimited hosting.", "Run real household and clean-install journeys with keyboard/TalkBack/Narrator and both languages/themes.", "Ensure tagged artifacts, checksums, licenses, current-state docs, support matrix and release notes match the code.", "Publish clear limits for uninstall, hidden devices, tethering, LAN traffic and ISP accounting differences."],
+      "validation": ["Run the release checklist, relevant regression suites, load tests and documented hardware matrix.", "Resolve security/data-loss/misleading-billing blockers before tagging.", "Have a fresh contributor follow setup and one issue handoff without relying on chat context."],
+      "non_goals": ["No new platform, payment system, AI feature or enforcement expansion inside the release audit.", "Do not close the milestone because the backlog was written or CI alone is green."]
+    }
+  ]
+}

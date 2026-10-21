@@ -1,0 +1,55 @@
+/* Generated from design/tokens.json. Do not edit. */
+:root {
+  --background: #F7F8FA;
+  --surface: #FFFFFF;
+  --surface-muted: #EEF1F5;
+  --foreground: #17191D;
+  --text-secondary: #555D6B;
+  --text-muted: #5C6678;
+  --border: #D7DCE4;
+  --border-strong: #737D8C;
+  --accent: #2457D6;
+  --accent-foreground: #FFFFFF;
+  --success: #17734B;
+  --warning: #8A5700;
+  --danger: #B42318;
+}
+[data-theme="dark"] {
+  --background: #111318;
+  --surface: #191D24;
+  --surface-muted: #242A34;
+  --foreground: #F2F4F7;
+  --text-secondary: #B3BBC8;
+  --text-muted: #9AA5B5;
+  --border: #343B47;
+  --border-strong: #8290A4;
+  --accent: #91B4FF;
+  --accent-foreground: #101725;
+  --success: #79D8AA;
+  --warning: #F0C47A;
+  --danger: #FFAAA3;
+}
+:root {
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 24px;
+  --spacing-xxl: 32px;
+  --spacing-section: 48px;
+  --radius-control: 16px;
+  --radius-panel: 24px;
+  --radius-surface: 28px;
+  --type-caption: 12px;
+  --type-label: 14px;
+  --type-body: 16px;
+  --type-section: 22px;
+  --type-title: 28px;
+  --type-metric: 36px;
+  --motion-fast: 160ms;
+  --motion-standard: 240ms;
+  --motion-exit: 180ms;
+  --layout-content-max: 1120px;
+  --layout-compact-breakpoint: 680px;
+  --layout-touch-target: 48px;
+}

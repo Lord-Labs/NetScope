@@ -1,0 +1,44 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "NetScope foundation API",
+    "version": "0.0.0",
+    "description": "Implemented routes only. Planned ingestion is not an active API."
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "operationId": "getHealth",
+        "summary": "Foundation liveness, not measurement or database readiness",
+        "responses": {
+          "200": {
+            "description": "Service responds; auth and ingest remain disabled",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": ["status", "service", "version", "capabilities"],
+                  "properties": {
+                    "status": { "const": "ok" },
+                    "service": { "const": "netscope-api" },
+                    "version": { "const": "0.0.0" },
+                    "capabilities": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": ["measurement_ingest", "authentication"],
+                      "properties": {
+                        "measurement_ingest": { "const": false },
+                        "authentication": { "const": false }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

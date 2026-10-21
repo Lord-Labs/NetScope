@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "device_id": "00000000-0000-4000-8000-000000000001",
+  "network_id": "00000000-0000-4000-8000-000000000002",
+  "counter_epoch": "00000000-0000-4000-8000-000000000003",
+  "sequence": 1,
+  "start": "2026-10-22T10:00:00Z",
+  "end": "2026-10-22T10:15:00Z",
+  "kind": "reading",
+  "scope": "interface_all_traffic",
+  "confidence": "estimated",
+  "coverage": "complete",
+  "rx_bytes": "104857600",
+  "tx_bytes": "1048576",
+  "gap_reason": null
+}

@@ -1,0 +1,18 @@
+[package]
+name = "netscope-client"
+version = "0.0.0"
+description = "NetScope native UI host; collection is implemented independently"
+authors = ["Lord Labs"]
+license = "MIT"
+edition = "2021"
+rust-version = "1.85"
+
+[lib]
+name = "netscope_client_lib"
+crate-type = ["staticlib", "cdylib", "rlib"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+tauri = { version = "2", features = [] }

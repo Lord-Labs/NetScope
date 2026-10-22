@@ -9,12 +9,14 @@
     "test": "tsx --test src/*.test.ts",
     "build": "wrangler deploy --dry-run --outdir dist"
   },
-  "dependencies": { "hono": "4.13.13" },
+  "dependencies": {
+    "hono": "4.13.13"
+  },
   "devDependencies": {
     "@cloudflare/workers-types": "5.20261021.1",
     "@types/node": "^24.0.0",
     "tsx": "4.23.15",
-    "typescript": "7.0.2",
+    "typescript": "6.0.3",
     "wrangler": "4.151.3"
   }
 }

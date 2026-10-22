@@ -11,7 +11,7 @@ does not reflect unequal usage. NetScope serves independent groups, typically
 | Decision | Requirement |
 | --- | --- |
 | Distribution | Open-source from the first commit; one shared hosted site later |
-| Platforms | Flutter UI for Windows and Android; native OS collection |
+| Platforms | React UI for Windows and Android; native OS collection |
 | Network | Household internet only; mobile data and other Wi-Fi excluded |
 | Permissions | No router administration, extra gateway, VPN, root or MDM |
 | Trust | Cooperative; gaps visible; no tamper-proof or fraud-detection claims |

@@ -2,36 +2,37 @@
 
 ## One repository, independently built targets
 
-Flutter, Kotlin, Rust, TypeScript and Svelte change together at the measurement
-contract. A monorepo keeps that boundary, design tokens, CI and issue context
-in one place. Each target keeps its normal tooling; do not add a cross-language
-build framework. npm workspaces cover JavaScript only.
+One React DOM/TypeScript/Vite frontend serves the bundled Tauri 2 app and the
+later website. Kotlin/Rust and the Hono API meet it at narrow contracts. A monorepo
+keeps those boundaries, design tokens, CI and issue context together. npm workspaces
+cover JavaScript only; Cargo and Android retain their normal toolchains.
 
 ```mermaid
 flowchart TD
-  FW[Flutter Windows UI] -->|restricted local IPC| WC[Rust Windows service]
-  FA[Flutter Android UI] -->|typed platform channel| AC[Kotlin Android service]
+  FW[React Windows UI] --> TH[Tauri Rust host]
+  TH -->|restricted local IPC| WC[Rust Windows service]
+  FA[React Android UI] -->|scoped Tauri plugin| AC[Kotlin Android service]
   WC --> WL[(local SQLite)]
   AC --> AL[(local SQLite / Room)]
   WC -->|later: committed report batches| API[Hono / Cloudflare Worker]
   AC -->|later: committed report batches| API
-  WEB[later: Svelte website] --> API
+  WEB[same React frontend in browser] --> API
   API --> DB[(D1)]
 ```
 
 Traffic does not travel through NetScope's cloud. Local mode must remain useful
-without account credentials, a cloud deployment, or a running Flutter engine.
+without account credentials, a cloud deployment, or a running WebView or JavaScript renderer.
 
 ## Native boundaries
 
-Windows collection is an OS service, not a Dart timer or a tray application's
+Windows collection is an OS service, not a JavaScript timer or a tray application's
 background loop. Use the least privileges justified by measured APIs. Restrict
 IPC to the appropriate local user and a small typed command set; bind device
 ownership explicitly on shared Windows machines.
 
 Android collection uses supported OS APIs and an honest background lifecycle.
 Kotlin owns sampling, coverage events, durable writes and short sync jobs.
-Flutter owns screens and user actions. Use a typed channel (Pigeon if useful).
+React/Tauri owns screens and user actions. Use narrow, permission-scoped Tauri commands/events.
 No VPN fallback, hidden API, root fallback, or dependency on keeping an Activity
 alive. WorkManager is for deferrable work, not a promise of continuous sampling.
 

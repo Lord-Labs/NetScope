@@ -14,7 +14,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  repository-api:
+  web-api:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -27,24 +27,32 @@ jobs:
       - run: npm run tokens:check
       - run: npm run check:repo
       - run: npm run typecheck
+      - run: npm run lint
       - run: npm test
-      - run: npm run build --workspace @netscope/api
+      - run: npm run build
+      - run: npx playwright install --with-deps chromium
+        working-directory: apps/client
+      - run: npm run test:e2e --workspace @netscope/client
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-failure
+          path: |
+            apps/client/test-results/
+            apps/client/playwright-report/
+          retention-days: 7
 
-  flutter:
-    runs-on: ubuntu-latest
-    timeout-minutes: 20
+  windows-host:
+    runs-on: windows-latest
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
-      - uses: subosito/flutter-action@v2
+      - uses: actions/setup-node@v4
         with:
-          flutter-version: '3.47.7'
-          channel: stable
-          cache: true
-      - run: flutter pub get
-        working-directory: apps/client
-      - run: dart format --output=none --set-exit-if-changed lib test
-        working-directory: apps/client
-      - run: flutter analyze
-        working-directory: apps/client
-      - run: flutter test
-        working-directory: apps/client
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run build --workspace @netscope/client
+      - run: rustup show
+      - run: cargo fmt --manifest-path apps/client/src-tauri/Cargo.toml --check
+      - run: cargo check --locked --manifest-path apps/client/src-tauri/Cargo.toml

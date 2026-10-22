@@ -2,14 +2,14 @@
 
 ## Hosting decisions
 
-Cloudflare Workers for Hono and later static Svelte assets, D1 for shared SQL,
+Cloudflare Workers for Hono and later static React assets, D1 for shared SQL,
 Better Auth only after a successful integration spike. No Student Pack, Heroku,
 Azure credits, required custom domain, paid plan, Redis or hosted job system.
 Use a free `workers.dev` address initially. No cloud resource is provisioned now.
 
 Keep `/health` independent of database readiness. Add a separate readiness check
 only with a real database dependency. Keep credentials in platform secrets,
-never `wrangler.jsonc`, Flutter assets or the Git repository.
+never `wrangler.jsonc`, React/Tauri assets or the Git repository.
 
 ## Budget assumptions to verify at provisioning
 

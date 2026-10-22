@@ -1,22 +1,14 @@
-# Flutter client foundation
+# Shared React client and native host
 
-Windows and Android share this UI. Native measurement is not implemented yet.
-The shell displays unknown values and not-started state; no fake readings,
-network status, registered devices or billing values are seeded.
+React DOM + TypeScript + Vite + Tailwind CSS 4, selected free Arc components,
+Tauri 2 host for Windows/Android. This same app builds for the browser; there is
+no second website frontend. Root README and docs/DEVELOPMENT.md own commands.
 
-```sh
-flutter pub get
-dart format --output=none --set-exit-if-changed lib test
-flutter analyze
-flutter test
-flutter run -d windows
-```
+Foundation only: no live measurement, authentication, cloud sync or billing.
+The browser cannot collect device-wide usage. Native Rust/Kotlin services own
+measurement/storage; scoped Tauri bridges arrive with their implementation issues.
+Do not put collection in React effects, a JavaScript timer or the WebView process.
 
-The foundation has Arabic/English, RTL/LTR, light/dark and adaptive layout using
-the generated design tokens. Strings are intentionally a small inline dictionary
-at this stage; move to normal ARB localization when A01 expands the UI. No state
-management, router, database or HTTP package is needed for a non-measuring shell.
-
-A02-A06 introduce the Rust service, restricted IPC, SQLite and actual data.
-G02/D01-D03 introduce Kotlin collection, native durability and the Android bridge.
-Do not move durable measurement into Flutter to bypass those acceptance gates.
+src/components/arc contains selected unmodified MIT registry files. See
+../../THIRD_PARTY_NOTICES.md and ../../docs/references/arc.md. Product tokens are
+generated from ../../design/tokens.json and imported after Arc foundation.

@@ -20,13 +20,13 @@ F01 -> G01 -> A02 -> A03 -> A04 -> A05 -> A06 -> A07 -> A08 -> A09
   \-> A01 -----------------------------------------/
 ```
 
-A01 implements/refines the Flutter design system and states. G01 tests the
+A01 implements/refines the React/Tauri design system and states. G01 tests the
 actual OS measurements before the collection approach is committed. Small
 parts may be combined in a PR when their acceptance criteria remain reviewable;
 the keys are scope boundaries, not a demand for bureaucratic sequencing.
 
 G02 runs independently from G01. An Android blocker must not hold a validated
-Windows release hostage. Never mark Android supported just because Flutter
+Windows release hostage. Never mark Android supported just because React/Tauri
 can build an APK.
 
 ## Shared service and settlements

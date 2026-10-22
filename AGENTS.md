@@ -7,8 +7,10 @@ The issue's acceptance criteria and dependency gates define the task.
 ## Product contract
 
 - Open-source, cooperative household internet accounting for Windows/Android.
-- Flutter/Dart is the app UI. Kotlin owns Android collection; an independent
-  Rust Windows service owns Windows collection. Svelte is the later web UI.
+- React DOM + TypeScript + Vite is the one frontend. Tauri 2 hosts the bundled
+  UI on Windows/Android; the same frontend builds for the browser. Kotlin owns
+  Android collection; an independent Rust service owns Windows collection.
+  See [the current stack decision](docs/decisions/0002-react-tauri.md).
 - Hono/TypeScript on Cloudflare Workers, D1/Drizzle, Better Auth for the later
   shared service. SQLite locally. No Student Pack, paid hosting requirement,
   VPN, router configuration, root requirement, or user packet interception.
@@ -44,7 +46,11 @@ The issue's acceptance criteria and dependency gates define the task.
 - No microservices, generic repositories, custom event buses, speculative
   packages, code generation frameworks, or broad rewrites for future phases.
 - Keep business decisions in domain code, collection in native services, and
-  presentation in Flutter/Svelte. A UI isolate must not own durable collection.
+  presentation in React. A WebView/JavaScript timer must not own durable collection.
+- Keep Tauri commands narrow, capability-scoped and typed. No unrestricted
+  shell/filesystem plugins, remote pages with native permissions, or disabled CSP.
+  A browser build cannot perform device-wide collection. Pair through the system
+  browser; a WebView is not the OAuth provider sign-in surface.
 - Read relevant callers and tests before edits. Preserve validation, error
   handling, accessibility, and data durability through refactors.
 - Add a focused regression/acceptance test for nontrivial logic, security,
@@ -69,21 +75,23 @@ The issue's acceptance criteria and dependency gates define the task.
 
 ## UI rules
 
-- Read [design system](docs/DESIGN_SYSTEM.md). Arc is visual inspiration, not
-  a React dependency or permission to reproduce paid/proprietary components.
+- Read [design system](docs/DESIGN_SYSTEM.md) and [Arc provenance](docs/references/arc.md).
+  Use reviewed free Arc/shadcn-compatible React components where they fit.
+  Preserve their MIT notices. Do not reproduce Pro source or install global skills.
 - Neutral surfaces, one restrained accent, semantic tokens, weights 400/500,
   one primary action per surface, in-place feedback and meaningful motion.
 - Arabic/RTL and English/LTR, keyboard focus, text scaling, reduced motion,
   light/dark, empty/error/unknown/offline states are product requirements.
 - New colors/spacing belong in `design/tokens.json`; run the token generator.
-  Do not hand-edit generated CSS/Dart or replace Flutter with React Native.
+  Do not hand-edit generated CSS or replace React/Tauri with React Native.
 
 ## Checks and handoff
 
 Run the smallest relevant checks from [development](docs/DEVELOPMENT.md).
 Always run `npm run check:repo`; for contract/token changes run `npm test`.
-Flutter changes require format, analyze, and tests; native changes require
-their platform checks and relevant hardware evidence. CI is not hardware proof.
+React changes require TypeScript, lint, component tests, browser checks and production
+build. Rust host changes require Cargo formatting/checks; collector changes also
+require their platform checks and relevant hardware evidence. CI is not hardware proof.
 
 In each PR/handoff state: issue, behavior changed, tests actually run, untested
 platforms/limits, and next unblocked issue. Update `docs/STATE.md` when real

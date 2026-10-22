@@ -44,7 +44,7 @@ export function issueBody(issue, plan, published = {}) {
     '## Goal', issue.goal, '',
     '## Required context',
     `Read [AGENTS](${base}AGENTS.md), [current state](${base}docs/STATE.md), and [roadmap](${base}docs/ROADMAP.md).`,
-    'Flutter app, native measurement, no VPN/router/root, no Student Pack. Scope and coverage must remain honest.', '',
+    'React DOM + TypeScript + Vite + Tauri 2, Arc/shadcn-compatible components, native measurement, no VPN/router/root, no Student Pack. Scope and coverage must remain honest.', '',
     '## Dependencies',
     issue.depends_on.length ? `Blocked by: ${issue.depends_on.map(dependency).join(', ')}. Recheck live acceptance before starting.` : 'None.', '',
     '## Scope / likely files', ...issue.paths.map((path) => `- \`${path}\``), '',

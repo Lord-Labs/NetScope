@@ -33,10 +33,10 @@ test('semantic body/status/action colors remain readable in both themes', () => 
   }
 });
 
-test('generated CSS and Dart contain the same source accent and spacing', () => {
+test('generated CSS contains both source palettes and shared spacing', () => {
   const rendered = renderTokens(tokens);
   assert.ok(rendered.css.includes(`--accent: ${tokens.colors.light.accent};`));
-  assert.ok(rendered.dart.includes(`Color(0xFF${tokens.colors.light.accent.slice(1)})`));
+  assert.ok(rendered.css.includes(`--accent: ${tokens.colors.dark.accent};`));
   assert.ok(rendered.css.includes(`--spacing-xl: ${tokens.spacing.xl}px;`));
 });
 

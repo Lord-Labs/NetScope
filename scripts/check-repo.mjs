@@ -8,13 +8,14 @@ const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const required = ['AGENTS.md', 'README.md', 'README.ar.md', 'LICENSE', 'SECURITY.md',
   'docs/START_HERE.md', 'docs/STATE.md', 'docs/ROADMAP.md', 'docs/DEVELOPMENT.md',
   'docs/DESIGN_SYSTEM.md', 'planning/backlog.json', 'planning/ISSUES.md',
-  'design/tokens.json', 'design/tokens.css', 'apps/client/lib/design/tokens.g.dart',
+  'design/tokens.json', 'design/tokens.css', 'apps/client/src/App.tsx',
+  'apps/client/src-tauri/tauri.conf.json', 'docs/decisions/0002-react-tauri.md',
   'packages/contracts/measurement.schema.json', 'packages/contracts/openapi.json'];
 for (const file of required) assert.ok(existsSync(resolve(root, file)), `Missing ${file}`);
 validateBacklog(JSON.parse(readFileSync(resolve(root, 'planning/backlog.json'), 'utf8')));
 
 const ignored = new Set(['.git', '.tools', '.local', 'node_modules', 'build', 'dist',
-  '.dart_tool', '.wrangler', '.gradle', 'target', 'ephemeral']);
+  '.wrangler', '.gradle', 'target', 'ephemeral', 'gen', 'test-results', 'playwright-report']);
 let links = 0;
 function walk(directory) {
   for (const item of readdirSync(directory, { withFileTypes: true })) {

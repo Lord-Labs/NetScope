@@ -1,5 +1,5 @@
 /* Generated from design/tokens.json. Do not edit. */
-:root {
+:root, :root[data-theme="light"] {
   --background: #F7F8FA;
   --surface: #FFFFFF;
   --surface-muted: #EEF1F5;
@@ -14,7 +14,7 @@
   --warning: #8A5700;
   --danger: #B42318;
 }
-[data-theme="dark"] {
+:root[data-theme="dark"] {
   --background: #111318;
   --surface: #191D24;
   --surface-muted: #242A34;
@@ -40,12 +40,12 @@
   --radius-control: 16px;
   --radius-panel: 24px;
   --radius-surface: 28px;
-  --type-caption: 12px;
-  --type-label: 14px;
-  --type-body: 16px;
-  --type-section: 22px;
-  --type-title: 28px;
-  --type-metric: 36px;
+  --type-caption: 0.75rem;
+  --type-label: 0.875rem;
+  --type-body: 1rem;
+  --type-section: 1.375rem;
+  --type-title: 1.75rem;
+  --type-metric: 2.25rem;
   --motion-fast: 160ms;
   --motion-standard: 240ms;
   --motion-exit: 180ms;

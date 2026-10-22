@@ -18,6 +18,10 @@ public issues. Public reports may describe a concern without exploit details.
   Database bindings and auth secrets stay server-side.
 - Native service IPC must restrict callers and commands. Do not expose an
   unauthenticated localhost control endpoint or execute arbitrary UI commands.
+- Tauri loads bundled frontend assets, with restrictive CSP and minimal scoped
+  capabilities. No remote page receives native permissions. Do not enable
+  unrestricted shell/filesystem plugins or treat WebView JavaScript as trusted
+  OS authority. Use the system browser for OAuth/pairing and validate returns.
 - Store credentials using OS protection; never store the household Wi-Fi
   password, ship server secrets in apps, or log credentials.
 - Migrations and updates must preserve unacknowledged local records. Maintain

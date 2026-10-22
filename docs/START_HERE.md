@@ -14,15 +14,15 @@ This repository is the handoff, not an invitation to redesign the stack.
 | Task | Required reference |
 | --- | --- |
 | Native collector / OS behavior | [Measurement](MEASUREMENT.md), [evidence template](evidence/TEMPLATE.md) |
-| Flutter / Svelte UI | [Design system](DESIGN_SYSTEM.md), [Arc provenance](references/arc.md) |
+| React/Tauri / React UI | [Design system](DESIGN_SYSTEM.md), [Arc provenance](references/arc.md) |
 | API / authentication / sync | [Architecture](ARCHITECTURE.md), [API](API.md), [security](../SECURITY.md) |
 | Expenses / financial settlement | [Billing](BILLING.md), [data model](DATA_MODEL.md) |
 | Deployment / retention | [Operations](OPERATIONS.md), [release gates](RELEASES.md) |
-| New or changed architectural choice | [Decision log](decisions/0001-foundation.md) |
+| New or changed architectural choice | [Current decision](decisions/0002-react-tauri.md) |
 
 ## Fastest path to a useful app
 
-Windows evidence -> native collector -> durable local ledger/IPC -> Flutter
+Windows evidence -> native collector -> durable local ledger/IPC -> React/Tauri
 history and honest status -> export -> installer -> tested local alpha.
 
 Work on the Android evidence spike early, independently. Do not block the

@@ -1,6 +1,6 @@
 # ADR 0001: one repository, local alpha first
 
-Status: accepted. Date: 2026-10-22.
+Status: superseded for frontend/tooling by [ADR 0002](0002-react-tauri.md). Historical record only. Date: 2026-10-22.
 
 ## Context
 

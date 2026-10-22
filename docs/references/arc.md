@@ -1,36 +1,51 @@
-# Arc reference and attribution
+# Arc source, reference and updates
 
-User-supplied source: `npx shadcn@latest add https://uiarc.dev/r/arc-skill.json`.
-Reviewed: 2026-10-22.
+Reviewed: 2026-10-22. User reference:
+`npx shadcn@latest add https://uiarc.dev/r/arc-skill.json`.
 
-- Registry: https://uiarc.dev/r/arc-skill.json
-- Site/catalog: https://uiarc.dev/llms.txt
-- Public skill: https://uiarc.dev/r/skills/arc/SKILL.md
-- Design, composition, motion, responsive and checklist documents are embedded
-  in the supplied public registry and were inspected as reference material.
+The registry contains agent guidance and targets ~/.claude/skills globally. We
+read it as reference without installing global instructions. Its catalog,
+component props, design/composition/motion/responsive/accessibility/checklist
+guidance informed the implementation. Product and security rules remain in AGENTS.
 
-## What was adapted
+## Included free source
 
-Calm neutral surfaces, semantic color roles, type weights 400/500, 4-point
-spacing, one primary action, concentric corners, restrained status color,
-meaningful motion, responsive states and accessible in-place feedback.
+The following selected items were copied using Arc's documented manual install
+method, with their original contents and relative imports:
 
-NetScope's values and code are original adaptations for Flutter and Svelte.
-Its typography adds Arabic support and its status vocabulary exposes measurement
-uncertainty. The local token JSON is the implementation source, not Arc CSS.
+| Registry | Local files |
+| --- | --- |
+| https://uiarc.dev/r/arc-foundation.json | apps/client/src/components/arc/foundation.css |
+| https://uiarc.dev/r/button.json | apps/client/src/components/arc/button/button.tsx and button.module.css |
+| https://uiarc.dev/r/arc-motion-tokens.json | apps/client/src/components/arc/motion-tokens.ts and lib/motion-tokens.ts |
 
-## What is not included
+Button is used for actual local UI actions. No Arc demo users, consumption,
+images, logos or Pro source are included. The MIT copyright/license notice is
+preserved in [third-party notices](../../THIRD_PARTY_NOTICES.md).
 
-No Arc component source, paid/Pro implementation, images, logo, bundled skill,
-React runtime, Motion/React dependency, registry credential or global skill
-installation is included. The supplied registry targets a React/Claude skill;
-running its installer would not implement a Flutter design system.
+## Integration and update policy
 
-Arc code/assets, if intentionally added to a compatible future surface, require
-an individual license/compatibility review. The NetScope MIT license does not
-relicense external material. Never reconstruct Pro components from screenshots.
+React DOM, CSS modules and Motion run in the browser and Tauri WebViews. Read
+https://uiarc.dev/components/button/markdown before changing props. Prefer an
+existing free item only when it fits the task; do not install the entire catalog.
+From apps/client, components.json enables `npx shadcn@latest add @uiarc/<id>`.
+Review the fetched source/dependencies and diff before updates, preserve notices,
+then run TypeScript, component, browser, production-build and affected native checks.
 
-The UI/UX Pro Max search corroborated a minimal dashboard direction and Flutter
-LayoutBuilder/Semantics guidance. Its generic hero/CTA, typography and extra
-accent suggestions were not adopted because they did not fit this utility or
-the explicit Arc reference. User direction wins over generated recommendations.
+Arc foundation is imported once, followed by generated NetScope semantic CSS.
+NetScope uses neutral surfaces, one restrained accent, 400/500 type, Arabic/RTL,
+English/LTR and truthful unknown/coverage states. System fonts are a foundation
+choice; A01 evaluates licensed bundled fonts without runtime downloads. Do not
+override component internals to imitate a Pro component.
+
+## Primary sources
+
+- https://uiarc.dev/llms.txt
+- https://uiarc.dev/docs/installation
+- https://uiarc.dev/license
+- https://uiarc.dev/r/arc-skill.json
+
+UI/UX Pro Max contributed responsive/accessibility review guidance and React
+testing-library semantic queries. The React best-practices review uses small
+components, effect-based browser mutations, stable keys, explicit TS props,
+named icon imports and no speculative memoization/state/data-fetch framework.

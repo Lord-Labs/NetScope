@@ -12,7 +12,7 @@ Foundation scaffolding is not a monitoring release.
 - Selected-network use persists across normal service restarts/reboots; resets
   and lost intervals are explicit. Unknown is never zero.
 - SQLite history/export and recovery tests pass; private data stays local.
-- Flutter shows real data, no seeded demo consumption, Arabic/English, light/dark,
+- React/Tauri shows real data, no seeded demo consumption, Arabic/English, light/dark,
   keyboard focus, 200% text and reduced motion without blocking the core task.
 - Installer/startup/uninstall tested on a clean supported Windows environment.
 - Publish measured idle/active CPU, memory, disk/write rate and installer/download
@@ -36,7 +36,7 @@ Foundation scaffolding is not a monitoring release.
 - G02/D04 evidence covers stated devices/OS versions, screen-off, battery saver,
   reboot, force-stop, VPN/IPv6, switching and permissions. Known unsupported
   conditions are visible before collecting or charging.
-- A Flutter APK build alone is not Android measurement support.
+- A React/Tauri APK build alone is not Android measurement support.
 - No unexplained collection continuity, ISP parity or anti-tamper claim remains.
 - README, STATE, issues, release assets and compatibility matrix agree.
 

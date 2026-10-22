@@ -3,86 +3,88 @@
 Understand shared internet usage. Split the cost with evidence.
 
 NetScope is an open-source, cooperative tool for households sharing a capped
-internet plan. It links a person's Windows and Android devices, aims to count
-only their household connection, and makes missing measurement visible.
+internet plan. A person can own several Windows/Android devices. Household-only
+attribution, coverage and accuracy must be established by platform evidence.
 
-**Status: project foundation, not a working internet meter yet.** The repository
-contains an app shell, API health endpoint, design tokens, contracts and an
-implementation backlog. The first useful release targets a local Windows alpha.
-Android billing accuracy remains a measurement gate. There is no cloud
-deployment, live sign-in, automatic collection or payment service in this commit.
+**Status: React/Tauri foundation, not a working internet meter yet.** The app
+shows honest unknown states. The API implements health only. There is no live
+collector, authentication, cloud deployment, settlement or monitoring release.
 
 [العربية](README.ar.md) · [Start here](docs/START_HERE.md) ·
 [Current capabilities](docs/STATE.md) · [Roadmap](docs/ROADMAP.md) ·
-[GitHub issues](https://github.com/Lord-Labs/NetScope/issues)
+[Issues](https://github.com/Lord-Labs/NetScope/issues)
 
-## Product decisions
+## Stack
 
-- Flutter for Android/Windows; native Kotlin/Rust collectors; local SQLite.
-- Svelte web dashboard later; Hono/Workers, D1/Drizzle and Better Auth later.
-- No VPN, router access, root, Student Pack or required paid cloud plan.
-- Cooperative reporting: shutdown/uninstall can leave unverifiable gaps.
-- All cost is proportional to accepted use within a selected start/end period.
-  Base plans and top-ups are entered manually. Missing coverage requires review.
-- Members see member totals and coverage; device details stay owner-only.
-- Estimated Wi-Fi/interface bytes must never masquerade as verified ISP bytes.
+| Layer | Choice |
+| --- | --- |
+| One frontend | React DOM + TypeScript + Vite |
+| Native UI host | Tauri 2 on Windows and Android |
+| Components | Free Arc items, shadcn-compatible registry, Tailwind CSS 4, Lucide, Motion |
+| Local collection/storage | Independent Rust Windows service; Kotlin Android plugin/service; SQLite/Room |
+| Later shared backend | Hono on Cloudflare Workers, D1/Drizzle, Better Auth after integration checks |
+| Later shared website | Web build of the same React frontend |
+
+The native app bundles its UI. Traffic does not pass through NetScope's cloud.
+A browser cannot meter device-wide use. No VPN, router administration, root,
+Student Pack or required paid hosting plan. See the
+[stack decision](docs/decisions/0002-react-tauri.md).
 
 ## Quick start
 
-Use Node 24 LTS, npm, and a stable Flutter SDK with a compatible Dart SDK.
-Exact tested tool versions and platform setup live in [development](docs/DEVELOPMENT.md).
+Use Node 24 LTS and npm. From the repository root:
 
 ```sh
 npm ci
-npm run check:repo
-npm test
+npm run dev:client
+```
+
+Open the Vite URL for the foundation preview. In a second terminal:
+
+```sh
 npm run dev:api
 ```
 
-The API exposes `GET /health` at the address printed by Wrangler. It does not
-accept usage reports yet. To run the Flutter shell in another terminal:
+The Worker implements only `GET /health`. To run the native Windows UI host,
+install Rust stable, MSVC C++ build tools and WebView2, then:
 
 ```sh
-cd apps/client
-flutter pub get
-flutter run -d windows
+npm run tauri --workspace @netscope/client -- dev
 ```
 
-On Windows, the Flutter desktop toolchain also requires Visual Studio's
-Desktop development with C++ workload. See `flutter doctor -v` and the setup
-guide before treating a compiler/toolchain failure as an app defect.
+See [development](docs/DEVELOPMENT.md) for checks and Android SDK/JDK/NDK setup.
+Native host compilation does not establish measurement support.
 
 ## Repository map
 
 ```text
-apps/client/          Flutter app and its platform runners
-apps/api/             Hono Worker foundation
-apps/web/             Future Svelte dashboard boundary (not implemented)
-native/windows/       Future independent Rust collector boundary
-packages/contracts/   Measurement schema, fixtures, implemented API spec
-design/               Shared semantic design tokens
-docs/                 Product, architecture, gates, releases, handoff
-planning/             Issue and milestone source, links to published issues
-scripts/              Small repository/token checks
-.github/              CI and contributor templates
+apps/client/src/        Shared React UI and selected free Arc components
+apps/client/src-tauri/  Native UI host, CSP and capability definitions
+apps/api/              Hono Worker health foundation
+native/windows/        Planned independent Rust measurement service
+native/android/        Planned Kotlin Tauri plugin/service
+packages/contracts/    Measurement schema, fixtures and implemented API spec
+design/                Semantic token source and generated CSS
+docs/                  Product, architecture, gates and contributor handoff
+planning/              Validated backlog and real GitHub issue links
+.github/               CI and contributor templates
 ```
 
 ## What ships first
 
-The first local Windows alpha must select one household network, persist real
-usage, show coverage/quality, survive UI closure, and export a transparent
-local report. It needs no login or hosted service. Financial settlement and
-multi-device aggregation are later releases, after measurement evidence.
+Local Windows alpha: select a household network, persist real readings, show
+scope/history/gaps, survive UI closure, export and install cleanly. No account
+or hosted service is required. Android evidence is independent. Sharing and
+full-cost proportional settlement over arbitrary selected periods follow.
+Missing data is never zero and estimated LAN/interface bytes are not a verified
+internet bill. Cooperative software cannot prevent an owner stopping/uninstalling it.
 
-Follow the dependencies in [the roadmap](docs/ROADMAP.md), not every issue at
-once. Read [AGENTS.md](AGENTS.md) before changing code. See
-[CONTRIBUTING.md](CONTRIBUTING.md) for the PR and evidence requirements.
+Read [AGENTS.md](AGENTS.md) and [CONTRIBUTING.md](CONTRIBUTING.md) before coding.
+Start with [G01](https://github.com/Lord-Labs/NetScope/issues/2).
 
 ## Design and license
 
-Calm neutral surfaces, clear typography, a restrained blue accent, useful motion
-and honest measurement states. Inspired by [Arc](https://uiarc.dev), adapted
-for Flutter/Svelte without vendoring Arc React or paid component source.
-
-NetScope code is [MIT licensed](LICENSE). Third-party references and dependencies
-retain their own licenses; see [provenance](docs/references/arc.md).
+Neutral surfaces, restrained accent, clear typography, Arabic/English, RTL/LTR,
+light/dark, keyboard and reduced motion. Free Arc source is used with its MIT
+notice, not paid components or preview data. See [provenance](docs/references/arc.md)
+and [third-party notices](THIRD_PARTY_NOTICES.md). Original NetScope code is [MIT](LICENSE).

@@ -18,17 +18,19 @@ dist/
 coverage/
 .wrangler/
 
-# Flutter / native builds
-.dart_tool/
-.flutter-plugins-dependencies
+# Native builds and generated runners
 build/
-android/local.properties
-android/key.properties
-android/.gradle/
-android/app/debug/
-android/app/profile/
-android/app/release/
-windows/flutter/ephemeral/
+local.properties
+key.properties
+.gradle/
+apps/client/src-tauri/gen/schemas/
+apps/client/src-tauri/gen/android/
+apps/client/src-tauri/gen/apple/
+apps/client/src-tauri/icons/ios/
+apps/client/src-tauri/icons/*.icns
+apps/client/src-tauri/icons/*Logo.png
+playwright-report/
+test-results/
 target/
 
 # Local usage data must never reach Git

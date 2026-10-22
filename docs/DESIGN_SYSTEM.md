@@ -10,18 +10,20 @@ restrained blue accent, generous but efficient spacing, and one useful action
 per surface. The character comes from type/rhythm and honest interaction, not
 ornament, glowing charts or a grid of decorative cards.
 
-Arc's original registry is for React. NetScope uses original Flutter/Svelte
-components and semantic tokens inspired by its principles. Do not run shadcn
-against the Flutter app, add React to satisfy a reference, copy Pro source,
-or vendor the external skill as an instruction that overrides AGENTS.
+NetScope uses actual free Arc React components where they fit, installed through
+its shadcn-compatible registry or documented manual source. Tailwind handles
+product layout; Arc components keep their CSS modules and public props. Read
+the item's markdown, preserve MIT notices, and never reconstruct Pro source.
+The same React DOM UI runs in the browser, WebView2 and Android WebView.
 
 ## Source of truth
 
-`design/tokens.json` defines original light/dark colors, type/space/radius scales,
-motion and layout. `npm run tokens:generate` writes:
-
-- `design/tokens.css` for the later Svelte website;
-- `apps/client/lib/design/tokens.g.dart` for Flutter.
+`design/tokens.json` defines NetScope's light/dark semantic colors and
+type/space/radius/motion/layout values. `npm run tokens:generate` writes
+`design/tokens.css`, imported once after Arc foundation. Color selector
+specificity supports both themes. Type values generate rem units for text zoom.
+Arc motion presets stay with the upstream components; product motion uses the
+matching durations. Do not hand-edit generated CSS or fork component internals.
 
 `npm run tokens:check` detects drift. Raw values belong in the token source,
 not individual screens. No build-time token framework or extra generator dependency.
@@ -42,7 +44,7 @@ not individual screens. No build-time token framework or extra generator depende
   sections. Page gutters 16 on compact and 24-32 on wider screens.
 - Radius tokens are adapted to 16/24/28. Inner corners account for padding;
   do not repeat the outer radius on nested children.
-- One consistent outline icon style. Foundation uses Material outlined icons;
+- One consistent outline icon style. Foundation uses Lucide icons;
   changing family later requires accessibility/license/size review, not mixing.
 
 ## Screen contract
@@ -71,7 +73,7 @@ says it is not measuring; real data is wired by later issues.
   padding/alignment, correct time/number formatting and sensible focus order.
 - Test 320/390/768/1024/1440 widths, landscape and 200% text. No page overflow;
   tables scroll in their region or become lists. Main action stays findable.
-- Android touch targets >=48 logical pixels; keyboard navigation and clear
+- Android WebView touch targets >=48 CSS pixels, checked on hardware; keyboard navigation and clear
   visible focus on Windows/web; screen-reader names on icon controls.
 - Body/secondary text contrast >=4.5:1 in both themes; meaningful control
   boundaries/icons >=3:1. Token tests are necessary but not a screen-reader test.
@@ -89,5 +91,5 @@ motion by showing final states immediately. Avoid layout shift and flashing.
 
 Attach real renders for both languages/themes and compact/desktop sizes, plus
 error/unknown/permission states affected by the change. Include keyboard and
-text-scale results. Record what was not checked. CI widget tests do not replace
+text-scale results. Record what was not checked. CI React component and browser tests do not replace
 TalkBack/Narrator testing or native permission-flow tests.

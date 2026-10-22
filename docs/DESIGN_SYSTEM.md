@@ -34,9 +34,17 @@ not individual screens. No build-time token framework or extra generator depende
   focus and emphasized data. Status colors represent real status with text.
 - Text weights 400 and 500. Hierarchy uses size/spacing/contrast. Changing values
   use tabular numerals and reserved space. No all-caps or eyebrow headings.
-- System fonts in the foundation; A01 evaluates bundled licensed Latin/Arabic
-  fonts (Inter/Geist-like Latin and an appropriate Arabic family). No runtime
-  font download or paid font requirement. Arabic readability beats literal font matching.
+- Bundled, open-licensed typefaces (A01 decision): Inter (latin subset, SIL
+  OFL 1.1) for Latin and numbers, Noto Sans Arabic (arabic subset, SIL OFL 1.1)
+  for Arabic, weights 400/500 only. Files live in `apps/client/src/fonts/`
+  (146 KiB total) and load from `apps/client/src/fonts.css`, which replaces the
+  foundation's system-font values for `--font-geist`/`--font-inter`; the
+  fallback is Segoe UI/system-ui/Arial. No runtime font download, CDN call,
+  paid font or ornamental family. Arabic readability beats literal font
+  matching: Noto Sans Arabic is a neutral unmodulated Arabic-script UI face,
+  and `unicode-range` fetches each script only when it renders. Display and
+  body share Inter; hierarchy comes from size, tracking and weight. Provenance
+  and licenses: [third-party notices](../THIRD_PARTY_NOTICES.md#fonts).
 - Thin dividers and borders before cards; shadows only on floating elements.
   No decorative gradients, glass blur, colored shadows, nested decorative cards
   or icons in unrelated rounded tiles.

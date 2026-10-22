@@ -34,9 +34,10 @@ then run TypeScript, component, browser, production-build and affected native ch
 
 Arc foundation is imported once, followed by generated NetScope semantic CSS.
 NetScope uses neutral surfaces, one restrained accent, 400/500 type, Arabic/RTL,
-English/LTR and truthful unknown/coverage states. System fonts are a foundation
-choice; A01 evaluates licensed bundled fonts without runtime downloads. Do not
-override component internals to imitate a Pro component.
+English/LTR and truthful unknown/coverage states. A01 bundles licensed Inter
+(Latin) and Noto Sans Arabic (Arabic) subsets with SIL OFL notices and no runtime
+font download; see [third-party notices](../../THIRD_PARTY_NOTICES.md#fonts).
+Do not override component internals to imitate a Pro component.
 
 ## Primary sources
 

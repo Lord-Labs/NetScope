@@ -1,12 +1,29 @@
 import { useEffect, useState } from 'react';
-import { Activity, ArrowDownUp, CirclePause, Laptop, LayoutDashboard, Moon, Sun } from 'lucide-react';
+import { Activity, ArrowDownUp, CirclePause, Laptop, LayoutDashboard, Moon, Shapes, Sun } from 'lucide-react';
 import { Button } from './components/arc/button/button';
 import { copy, type Locale } from './copy';
+import { StateGallery } from './state-gallery';
+
+type View = 'overview' | 'devices' | 'states';
+type Theme = 'light' | 'dark';
+
+const localePreference = 'netscope.locale';
+const themePreference = 'netscope.theme';
+
+/** Preferences are optional; a blocked or missing localStorage must not break the UI. */
+function storedPreference<T extends string>(key: string, allowed: readonly T[], fallback: T): T {
+  try {
+    const stored = window.localStorage.getItem(key);
+    return allowed.includes(stored as T) ? (stored as T) : fallback;
+  } catch {
+    return fallback;
+  }
+}
 
 export function App() {
-  const [locale, setLocale] = useState<Locale>('ar');
-  const [theme, setTheme] = useState<'light' | 'dark'>('light');
-  const [view, setView] = useState<'overview' | 'devices'>('overview');
+  const [locale, setLocale] = useState<Locale>(() => storedPreference<Locale>(localePreference, ['ar', 'en'], 'ar'));
+  const [theme, setTheme] = useState<Theme>(() => storedPreference<Theme>(themePreference, ['light', 'dark'], 'light'));
+  const [view, setView] = useState<View>('overview');
   const [showHelp, setShowHelp] = useState(false);
   const text = copy[locale];
 
@@ -14,7 +31,16 @@ export function App() {
     document.documentElement.lang = locale;
     document.documentElement.dir = locale === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.dataset.theme = theme;
+    try {
+      window.localStorage.setItem(localePreference, locale);
+      window.localStorage.setItem(themePreference, theme);
+    } catch {
+      // The preference is a convenience; the current session still works without storage.
+    }
   }, [locale, theme]);
+
+  const heading = view === 'overview' ? text.title : view === 'devices' ? text.devices : text.galleryTitle;
+  const subtitle = view === 'overview' ? text.subtitle : view === 'devices' ? text.devicesDescription : text.gallerySubtitle;
 
   return (
     <div className="app" dir={locale === 'ar' ? 'rtl' : 'ltr'} lang={locale}>
@@ -41,8 +67,8 @@ export function App() {
         </nav>
         <main id="main" tabIndex={-1}>
           <div className="page-heading">
-            <h1>{view === 'overview' ? text.title : text.devices}</h1>
-            <p>{view === 'overview' ? text.subtitle : text.devicesDescription}</p>
+            <h1>{heading}</h1>
+            <p>{subtitle}</p>
           </div>
           {view === 'overview' ? (
             <>
@@ -64,14 +90,21 @@ export function App() {
                 {showHelp && <div id="how-it-works" className="help"><h3>{text.helpTitle}</h3><p>{text.helpDescription}</p></div>}
               </section>
             </>
-          ) : (
+          ) : view === 'devices' ? (
             <section className="usage-panel" aria-labelledby="empty-devices-title">
               <Laptop size={28} aria-hidden="true" />
               <h2 id="empty-devices-title">{text.noDevices}</h2>
               <p>{text.devicesEmpty}</p>
             </section>
+          ) : (
+            <StateGallery locale={locale} />
           )}
-          <footer className="page-footer">{text.preview}</footer>
+          <footer className="page-footer">
+            <span>{text.preview}</span>
+            <Button variant="ghost" size="sm" aria-current={view === 'states' ? 'page' : undefined} onClick={() => setView('states')}>
+              <Shapes size={18} aria-hidden="true" /><span>{text.statesNav}</span>
+            </Button>
+          </footer>
         </main>
       </div>
     </div>

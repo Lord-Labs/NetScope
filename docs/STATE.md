@@ -6,7 +6,7 @@ Updated: 2026-10-22. Do not infer implemented features from the roadmap.
 | --- | --- | --- |
 | Product decisions, agent rules, release plan | Implemented | Repository documents and linked backlog |
 | Arc-inspired semantic token source | Implemented | `design/tokens.json`, generated CSS |
-| Shared React/Vite UI | Foundation | Free Arc button, empty/unknown states; no live readings |
+| Shared React/Vite UI | Foundation | A01 semantic usage/status/history/setup primitives, labeled state gallery, bundled Inter/Noto Sans Arabic; no live readings |
 | Tauri 2 native UI host | Foundation | Rust/config/CSP, no collector or privileged commands |
 | `GET /health` Worker | Foundation | API unit tests; no DB dependency |
 | Measurement JSON schema / fixtures | Design contract | Contract checks; ingestion not implemented |
@@ -23,14 +23,17 @@ Updated: 2026-10-22. Do not infer implemented features from the roadmap.
 ## Next work
 
 Take G01 (Windows measurement spike). G02 is an independent early research
-task. A01 can refine the foundation UI alongside evidence work. Follow
+task. A01 design primitives are implemented on `feat/a01-design-primitives`
+pending review; A06 later connects them to real collector data. Follow
 `planning/ISSUES.md` for actual GitHub links and dependency keys.
 
 ## Evidence rules
 
 Current foundation checks and limits are recorded in
-[React foundation evidence](evidence/REACT_FOUNDATION.md). Historical frontend
-checks do not validate this stack; [ADR 0002](decisions/0002-react-tauri.md) is current.
+[React foundation evidence](evidence/REACT_FOUNDATION.md); A01 primitives and
+font evidence are in [A01 design primitives](evidence/A01_DESIGN_PRIMITIVES.md).
+Historical frontend checks do not validate this stack;
+[ADR 0002](decisions/0002-react-tauri.md) is current.
 
 CI validates builds, types and deterministic tests. It cannot establish
 collector accuracy, battery impact, background survival, OS permission UX,

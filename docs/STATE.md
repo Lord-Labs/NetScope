@@ -10,7 +10,7 @@ Updated: 2026-10-22. Do not infer implemented features from the roadmap.
 | Tauri 2 native UI host | Foundation | Rust/config/CSP, no collector or privileged commands |
 | `GET /health` Worker | Foundation | API unit tests; no DB dependency |
 | Measurement JSON schema / fixtures | Design contract | Contract checks; ingestion not implemented |
-| Windows collector / service | Not implemented | G01, A02, A03 |
+| Windows collector / service | Not implemented | G01 partial evidence: `GetIfTable2` spike; switch/sleep/upload matrix and A02 pending |
 | Android collector / background lifecycle | Not implemented | G02, D01, D02 |
 | Household-only internet accuracy | Unverified on both platforms | Hardware evidence is required |
 | SQLite usage ledger | Not implemented | A04 / D02 |
@@ -22,15 +22,23 @@ Updated: 2026-10-22. Do not infer implemented features from the roadmap.
 
 ## Next work
 
-Take G01 (Windows measurement spike). G02 is an independent early research
-task. A01 can refine the foundation UI alongside evidence work. Follow
-`planning/ISSUES.md` for actual GitHub links and dependency keys.
+Finish G01 on a quiet household network with the tester present: sleep/reboot,
+network switch, a second network, upload behaviour vs a reference, and an
+independent router or packet reference if obtainable. Partial G01 evidence and
+the provisional API decision are in
+[Windows measurement evidence](evidence/G01-windows-measurement.md). Then take
+A02. G02 is an independent early research task. A01 can refine the foundation UI
+alongside evidence work. Follow `planning/ISSUES.md` for actual GitHub links and
+dependency keys.
 
 ## Evidence rules
 
 Current foundation checks and limits are recorded in
 [React foundation evidence](evidence/REACT_FOUNDATION.md). Historical frontend
 checks do not validate this stack; [ADR 0002](decisions/0002-react-tauri.md) is current.
+G01's partial hardware evidence and its limits are recorded in
+[Windows measurement evidence](evidence/G01-windows-measurement.md); it is not a
+validated collector capability and does not close G01.
 
 CI validates builds, types and deterministic tests. It cannot establish
 collector accuracy, battery impact, background survival, OS permission UX,

@@ -1,0 +1,245 @@
+{
+  "spike": "G01 Windows measurement",
+  "date_utc": "2026-10-22",
+  "issue": "https://github.com/Lord-Labs/NetScope/issues/2",
+  "harness": {
+    "measure_sha256": "07A53B28806396D05EA1827EEAFB72779A55C8A5092FA15EC30405F3FE0811E0",
+    "run_matrix_sha256": "F5890D6E3F984BF1FF21E487380AFB419B0EE18D144BDEAD7C19B4DF9B145773",
+    "hosted_by": "Windows PowerShell 5.1 desktop profile, no administrator rights"
+  },
+  "host": {
+    "os": "Microsoft Windows 11 Pro",
+    "version": "10.0.26200",
+    "build": "26200",
+    "ubr": 9711,
+    "display_version": "25H2",
+    "boot_utc": "2026-10-14T05:51:30.4730890Z",
+    "uptime_seconds": 689472,
+    "powershell": "5.1.26100.9711"
+  },
+  "interface_context": {
+    "rows_returned": 40,
+    "wifi_index": 14,
+    "wifi_hardware_interface": true,
+    "wifi_filter_interface": false,
+    "wifi_oper_status": 1,
+    "wifi_media_connect_state": 1,
+    "wifi_transmit_link_speed_bps": 144400000,
+    "wifi_receive_link_speed_bps": 144400000,
+    "wifi_duplicate_rows_at_run_start": [
+      {
+        "index": 22,
+        "hardware_interface": false,
+        "filter_interface": true,
+        "in_octets": 1876076793,
+        "out_octets": 170842904
+      },
+      {
+        "index": 23,
+        "hardware_interface": false,
+        "filter_interface": true,
+        "in_octets": 1876076793,
+        "out_octets": 170842904
+      },
+      {
+        "index": 24,
+        "hardware_interface": false,
+        "filter_interface": true,
+        "in_octets": 1876076793,
+        "out_octets": 170842904
+      },
+      {
+        "index": 25,
+        "hardware_interface": false,
+        "filter_interface": true,
+        "in_octets": 1876076793,
+        "out_octets": 170842904
+      },
+      {
+        "index": 26,
+        "hardware_interface": false,
+        "filter_interface": true,
+        "in_octets": 1876076793,
+        "out_octets": 170842904
+      },
+      {
+        "index": 14,
+        "hardware_interface": true,
+        "filter_interface": false,
+        "in_octets": 1876076793,
+        "out_octets": 170842904
+      }
+    ],
+    "other_physical_interfaces": [
+      {
+        "index": 12,
+        "type": 6,
+        "oper_status": 2
+      }
+    ]
+  },
+  "idle_baseline": {
+    "seconds": 60.92,
+    "wifi_in_octets": 4255973,
+    "wifi_out_octets": 1191132,
+    "profile_rx_octets": 3470300,
+    "profile_tx_octets": 2530731,
+    "profile_bucket_count": 2,
+    "note": "background traffic was present; see profile observation"
+  },
+  "controlled_downloads": {
+    "url": "http://212.183.159.230/100MB.zip",
+    "transport": "plain HTTP, one request per repetition, body written to NUL",
+    "repetitions": [
+      {
+        "http_code": 200,
+        "app_octets": 104857600,
+        "seconds": 30.674,
+        "wifi_in_octets": 108956237,
+        "wifi_out_octets": 1793267,
+        "ratio_in": 1.0391,
+        "ratio_out": 0.0171,
+        "started_utc": "2026-10-22T05:23:46.4021805Z"
+      },
+      {
+        "http_code": 200,
+        "app_octets": 104857600,
+        "seconds": 36.562,
+        "wifi_in_octets": 108948403,
+        "wifi_out_octets": 1742540,
+        "ratio_in": 1.039,
+        "ratio_out": 0.0166,
+        "started_utc": "2026-10-22T05:24:28.4091436Z"
+      },
+      {
+        "http_code": 200,
+        "app_octets": 104857600,
+        "seconds": 31.668,
+        "wifi_in_octets": 108370204,
+        "wifi_out_octets": 1756887,
+        "ratio_in": 1.0335,
+        "ratio_out": 0.0168,
+        "started_utc": "2026-10-22T05:25:16.1682310Z"
+      }
+    ],
+    "totals": {
+      "app_octets": 314572800.0,
+      "wifi_in_octets": 326274844.0,
+      "wifi_out_octets": 5292694.0,
+      "ratio_in": 1.0372,
+      "interface_minus_app_percent": 3.72
+    }
+  },
+  "lan_only_broadcast": {
+    "method": "400 UDP datagrams of 60000 bytes to 255.255.255.255:9999",
+    "app_out_octets": 24000000,
+    "window_seconds": 21.0,
+    "wifi_in_octets": 2094,
+    "wifi_out_octets": 24576395,
+    "out_over_app_ratio": 1.024,
+    "profile_rx_octets": 0,
+    "profile_tx_octets": 0,
+    "profile_bucket_count": 1,
+    "note": "LAN-only egress counted by interface counters; profile usage showed no bytes in the same window"
+  },
+  "lan_http_loop": {
+    "target": "default gateway HTTP server (LAN only)",
+    "requests": 100,
+    "app_download_octets": 10738000,
+    "http_codes": [
+      "302"
+    ],
+    "wifi_in_octets": 11004412,
+    "wifi_out_octets": 2938280,
+    "profile_rx_octets": 0,
+    "profile_tx_octets": 0,
+    "profile_bucket_count": 1,
+    "note": "background traffic was present during this loop; the broadcast observation is the cleaner LAN test"
+  },
+  "wan_upload_attempts": [
+    {
+      "app_octets": 524288,
+      "seconds": 1.11,
+      "speed_bps": 473845,
+      "http_code": 200,
+      "wifi_out_octets": 566599,
+      "note": "burst-sized request; completed"
+    },
+    {
+      "app_octets": 1048576,
+      "seconds": 28.41,
+      "speed_bps": 36913,
+      "http_code": 200,
+      "wifi_out_octets": 1811318,
+      "note": "same request later completed slowly"
+    },
+    {
+      "app_octets": 4194304,
+      "seconds": 150.01,
+      "speed_bps": 12560,
+      "http_code": 100,
+      "wifi_out_octets": 9301171,
+      "note": "curl exit 28 timeout after 1884160 of 4194304 bytes; not comparable"
+    },
+    {
+      "app_octets": 20971520,
+      "seconds": null,
+      "speed_bps": 14000,
+      "http_code": null,
+      "wifi_out_octets": null,
+      "note": "20 MiB attempt stalled at about 14 KB/s during the first matrix run and was cancelled; no sustained upload reference was obtained"
+    }
+  ],
+  "profile_usage_queries": [
+    {
+      "label": "download group, 11 s after last transfer",
+      "window": "2026-10-22T05:23:46Z..2026-10-22T05:25:48Z",
+      "granularity": "PerMinute",
+      "bucket_count": 3,
+      "rx_octets": 207508023,
+      "tx_octets": 5230932
+    },
+    {
+      "label": "same download window, later re-query",
+      "window": "2026-10-22T05:23:46Z..2026-10-22T05:25:48Z",
+      "granularity": "PerMinute",
+      "bucket_count": 3,
+      "rx_octets": 0,
+      "tx_octets": 0
+    },
+    {
+      "label": "idle 61 s window",
+      "granularity": "PerMinute",
+      "bucket_count": 2,
+      "rx_octets": 3470300,
+      "tx_octets": 2530731
+    },
+    {
+      "label": "last 5 minutes",
+      "granularity": "PerMinute",
+      "bucket_count": 0,
+      "rx_octets": 0,
+      "tx_octets": 0
+    },
+    {
+      "label": "last 15 minutes",
+      "granularity": "PerMinute",
+      "bucket_count": 16,
+      "rx_octets": 382991565,
+      "tx_octets": 83534426
+    }
+  ],
+  "api_contract_notes": [
+    "NetworkUsage exposes only BytesReceived, BytesSent and ConnectionDuration; bucket StartTime/EndTime are not accessible through the Windows.Runtime projection used here.",
+    "Microsoft Learn remarks for NetworkUsage describe chronological but sparse intervals, a provisional partial trailing interval and accounting delay, so positional bucket-to-clock mapping is not reliable.",
+    "The same historical window returned 207,508,023 rx octets immediately after the transfers and 0 rx octets on re-query minutes later."
+  ],
+  "untested": [
+    "sleep, reboot and adapter/counter reset behaviour",
+    "network switch, roam or a second household Wi-Fi network",
+    "cellular or simultaneous interfaces (Ethernet was down)",
+    "collector or UI process closure (no collector exists yet)",
+    "IPv6 internet path (network advertises link-local IPv6 only)",
+    "router or other independent packet/billing reference (no router admin access)"
+  ]
+}

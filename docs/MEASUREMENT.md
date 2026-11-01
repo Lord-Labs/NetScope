@@ -28,6 +28,35 @@ independent reference layer. Decide one of:
   an ISP bill; experimental local release only;
 - `unsupported`: attribution/coverage is too unreliable for a useful result.
 
+### Partial G01 findings (2026-10-22, Windows 11 build 26200.9711)
+
+The full record and numbers are in
+[the G01 evidence file](evidence/G01-windows-measurement.md); this section is the
+decision-relevant summary. The matrix is not complete, so G01 stays open.
+
+- `GetIfTable2` is usable without administrator rights and its counters tracked
+  three controlled 100 MiB downloads consistently at the interface layer
+  (aggregate +3.72%, repetition spread 0.56 percentage points).
+- One physical Wi-Fi adapter appeared as six rows sharing identical counters
+  (physical plus filter drivers); selecting the physical row by
+  `hardware_interface`/`filter_interface` flags is mandatory.
+- LAN-only traffic (24 MB UDP broadcast) was counted by the interface counter,
+  so interface bytes are not internet-only bytes.
+- `ConnectionProfile.GetNetworkUsageAsync` exposed no bucket timestamps through
+  the .NET projection; its buckets are sparse, delayed, and the same historical
+  window returned 207.5 MB and later 0 B. It is rejected as a collector
+  accounting source for this phase.
+- WAN upload on the test connection was not stable (burst-sized transfers
+  completed; sustained attempts stalled), so upload evidence is directional
+  only. IPv6, sleep/reboot, network switch, a second network and simultaneous
+  interfaces remain untested.
+
+Provisional direction: implement the Windows collector with `GetIfTable2` and
+report scope `interface_all_traffic` with confidence `estimated`, recording
+counter epochs, resets, network changes and coverage gaps. `internet_verified`
+is not supported by current evidence. Finish the remaining G01 matrix before
+A02 treats the measurement path as validated.
+
 ## Android gate (G02)
 
 Start with Android 12+ for the per-interface TrafficStats experiment, while
